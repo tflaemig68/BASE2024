@@ -1,0 +1,10 @@
+19:55:55 **** Incremental Build of configuration Debug for project TOFTest ****
+make -j8 all 
+arm-none-eabi-size   TOFTest.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49536	    512	   1680	  51728	   ca10	TOFTest.elf
+Finished building: default.size.stdout
+ 
+
+19:55:55 Build Finished. 0 errors, 0 warnings. (took 260ms)
+

@@ -245,6 +245,18 @@ int getRotaryPosition()
 	return rotoryPosition;
 }
 
+uint16_t setRotaryPosition(int32_t position)
+{
+	if (initRotaryPushButtonDone == false)
+	{
+		return ERROR_VALUE;
+	}
+
+	rotoryPosition = position;
+
+	return 0;
+}
+
 
 /*
  * @function:	 ROTARY_A_HANDLER
@@ -253,6 +265,11 @@ int getRotaryPosition()
  * @brief: 		 EXTI Interrupt Handler for ROT A.
  *               Checks ROT B and updates the position accordingly.
  */
+
+
+
+
+
 void ROTARY_A_HANDLER(void)
 {
 	/* Check ROT B and update position */

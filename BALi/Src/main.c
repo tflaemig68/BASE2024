@@ -67,10 +67,6 @@ int main(void)
 
 /*  End I2C Variables  */
 
-	char strCardID[]   = ".  .  .  .  .  .  .\0";
-	char strFirmware[] = ". . .          \0";  // dummyString with NULL
-
-
 	char strX[8],strY[8],strZ[8],strT[32];
 	int8_t Temp, XPOS;
 	int16_t XYZraw[3],XYZBMA[3],XYZMPU[3],XYZgMPU[3];
@@ -80,10 +76,10 @@ int main(void)
 	int pos_motR=0, pos_motL=0;
 	float XYZ[3], AlphaBeta[2];
 
-	static uint8_t testmode = 1;
+	static uint8_t RunMode = 1;
 	uint16_t timeTMode5;
 
-	//int testmode = 1;
+	//int RunMode = 1;
    	//unsigned int r = 0;
 
        // Dies ist das Array, das die Adressen aller Timer-Variablen enthaelt.
@@ -135,15 +131,13 @@ int main(void)
 		   LED_green_off;
 
 
-		   switch (testmode)
+		   switch (RunMode)
 		   {
 		   	   case 0:  //I2C Scan
 		   	   {
-		   		   //lcd7735_setForeground(ST7735_YELLOW);
 		   		   i2cSetClkSpd(i2c,  I2C_CLOCK_100);
 		   		   i2cSetClkSpd(i2c2,  I2C_CLOCK_400);
-		   		   //tftPrint((char *)".  .  .  .  . \0",66,14,0);
-		   		   testmode  = 1;
+		   		   RunMode  = 1;
 		   	   }
 		   	   case 1:  //I2C Scan
 		   	   {
@@ -184,11 +178,6 @@ int main(void)
 						   {
 							   LIS3DHenable = true;
 							   tftPrint((char *)"LIS3DH connected \0",0,28,0);
-
-							   tftPrint((char *)"Temp:\0",0,40,0);
-							   tftPrint((char *)"X:\0",0,50,0);
-							   tftPrint((char *)"Y:\0",0,60,0);
-							   tftPrint((char *)"Z:\0",0,70,0);
 							   LED_blue_on;
 						   }
 						   break;
@@ -196,9 +185,6 @@ int main(void)
 						   {
 							   BMA020enable = true;
 							   tftPrint((char *)"BMA020 \0",0,42,0);
-							   tftPrint((char *)"X:\0",0,50,0);
-							   tftPrint((char *)"Y:\0",0,60,0);
-							   tftPrint((char *)"Z:\0",0,70,0);
 						   }
 						   break;
 						   case i2cAddr_MPU6050:
@@ -211,18 +197,11 @@ int main(void)
 					   }
 				   }
 
-				   if ((scanAddr == 0) && (enableRFID))
-				   {
-					   scanAddr = 0x7F;
-					   i2cTaskTime = 200UL;
-					   		// SL018 only works with 100kHz
-					   testmode = 2;
-				   }
-				   if ((scanAddr == 0) && ((LIS3DHenable)|| (BMA020enable)||(MPU6050enable)))
+		   		   if ((scanAddr == 0) && (MPU6050enable))
 				   {
 					   LED_blue_on;
 					   scanAddr = 0x7F;
-					   testmode = 4;
+					   RunMode = 4;
 					   i2cTaskTime = 200;
 
 				   }
@@ -238,7 +217,7 @@ int main(void)
 						   i2c = I2C1;
 						   tftFillScreen(tft_BLACK);
 					   }
-				       testmode = 0;
+				       RunMode = 0;
 				   }
 				   else
 				   {
@@ -246,40 +225,10 @@ int main(void)
 				   }
 				   break;
 				}
-		   	   	case 2:  // read RFID Firmware
-				{
-					if (RFID_readFWVersion(i2c, (char *)strFirmware) >= 0)
-					{
-						tftPrint((char *)"FW: \0",0,48,0);
-						tftPrint((char *)strFirmware,24,48,0);
-						testmode = 3;
-						tftPrint((char *)"ID:\0",0,70,0);
-					}
-					else
-					{
-						;
-					}
-				}
-				break;
-		   	   	case 3:  // read RFID ID
-		   		{
-		   			if (RFID_readCard(i2c, strCardID)> 0)
-		   			{
-		   				tftPrint((char *)strCardID,24,70,0);
-		   			}
-		   		}
-		   		break;
-
-// 3DG Sensor function
+	// 3DG Sensor function
 		   	 	case 4:  // 3DGInit Init
 		   	 	{
 		   	 		LED_green_on;
-		   			if ((BMA020enable) && (BMA020ret < 0))
-		   			{
-		   				BMA020ret = i2cBMA020_init(i2c,0);
-		   			}
-		   			else
-		   			{ BMA020ret = 0; }
 		   			if ((MPU6050enable) && (MPU6050ret <0))
 					{
 						MPU6050ret = i2cMPU6050_init(i2c,0);
@@ -287,16 +236,9 @@ int main(void)
 		   			else
 		   			{ MPU6050ret = 0; }
 
-					if (BMA020ret > 0)										// no LIS3DH Sensor present
-					{
-						tftPrint("no 3DGSensors Present ",0,0,0);
-						i2cTaskTime = 500;
-						testmode = 1;
-					}
 
 
-
-					if ((BMA020ret == 0)  && (MPU6050ret == 0))									// LIS3DH init-procedure finished
+					if  (MPU6050ret == 0)									// MPU6050 init-procedure finished
 					{
 						if ((StepRightenable)&& (StepLeftenable))
 						{
@@ -310,7 +252,7 @@ int main(void)
 							//setIrun(i2cAddr_motL, Irun);
 							//setIhold(i2cAddr_motL, Ihold);
 							i2cTaskTime = StepTaskTime;									// Tasktime for Stepper Balancing 70ms
-							testmode = 9;
+							RunMode = 9;
 							tftFillScreen(tft_BLACK);
 							tftPrint("DHBW BALANCER (c)Fl\0",0,0,0);
 
@@ -319,74 +261,9 @@ int main(void)
 						else
 						{
 							i2cTaskTime = 70;									// Tasktime for display 70ms
-							testmode = 5;
+							RunMode = 5;
 							timeTMode5 = 100;							// count of cycles in Mode5
 						}
-					}
-				}
-				break;
-		   	 	case 5:  // read 3DG Data
-				{
-					LED_green_off;
-					LED_red_on;
-					if (BMA020enable)
-					{
-						i2cBMA020XYZ(i2c,(int16_t *) XYZBMA);
-						XPOS =15;
-						sprintf(strX, "%+5i", XYZBMA[2]); tftPrint((char *)strX,XPOS,50,0);
-						sprintf(strX, "%+5i", -XYZBMA[1]); tftPrint((char *)strX,XPOS,60,0);
-				//		sprintf(strX, "%+5i", XYZBMA[0]); tftPrint((char *)strX,XPOS,70,0);
-						AlphaBeta[0] =57* atan((float)-XYZBMA[1]/XYZBMA[2]);
-						sprintf(strX, "%+4.1f", AlphaBeta[0]); tftPrint((char *)strX,XPOS,80,0);
-					}
-					if (MPU6050enable)
-					{
-						i2cMPU6050XYZ(i2c,(int16_t *) XYZMPU);
-						XPOS =60;
-						const float MPU6050Res = 16.384;
-						sprintf(strX, "%+5.0f", XYZMPU[0]/MPU6050Res); tftPrint((char *)strX,XPOS,50,0);
-						sprintf(strX, "%+5.0f", XYZMPU[1]/MPU6050Res); tftPrint((char *)strX,XPOS,60,0);
-					//	sprintf(strX, "%+5.0f", XYZMPU[2]/MPU6050Res); tftPrint((char *)strX,XPOS,70,0);
-						AlphaBeta[1] =57* atan((float)XYZMPU[1]/XYZMPU[0]);
-						sprintf(strX, "%+4.1f", AlphaBeta[1]); tftPrint((char *)strX,XPOS,80,0);
-
-						i2cMPU6050GYRO(i2c,(int16_t *) XYZgMPU);
-						XPOS =115;
-						const float MPU6050GyroRes = 131;
-						sprintf(strX, "%+4.0f", XYZgMPU[2]/MPU6050GyroRes); tftPrint((char *)strX,XPOS,70,0);
-				//		sprintf(strX, "%+4.0f", XYZgMPU[1]/MPU6050GyroRes); tftPrint((char *)strX,XPOS,60,0);
-				//		sprintf(strX, "%+4.0f", XYZgMPU[2]/MPU6050GyroRes); tftPrint((char *)strX,XPOS,70,0);
-
-
-					}
-
-					if ((timeTMode5--) > 0)
-					{
-						testmode = 8;
-						i2cTaskTime = StepTaskTime;
-						LED_blue_off;
-						LED_red_off;
-						tftFillScreen(tft_BLACK);
-
-					}
-		   	 	}
-				break;
-		 	 	case 6:  // LIS3DH Init		   			   		{
-				{
-					LED_red_off;
-					LIS3DHret = i2cLIS3DH_init(i2c, 0);
-					if (LIS3DHret > 0)										// no LIS3DH Sensor present
-					{
-						tftPrint("LIS3DH not Present ",0,0,0);
-						i2cTaskTime = 500;
-						testmode = 1;
-					}
-					if (LIS3DHret == 0)										// LIS3DH init-procedure finished
-					{
-						tftPrint("(C)23Fl I2C LIS3DH ",0,0,0);
-						i2cTaskTime = 70;									// Tasktime for display 70ms
-						testmode = 7;
-						timeTMode5 = 10;							// count of cycles in Mode5
 					}
 				}
 				break;
@@ -411,7 +288,7 @@ int main(void)
 		   			tftPrint((char *)strZ,20,70,0);
 					if ((timeTMode5--) > 0)
 					{
-						testmode = 8;
+						RunMode = 8;
 						tftFillScreen(tft_BLACK);
 						tftPrint("T:    LIS3DH (C)23Fl",0,0,0);
 						i2cTaskTime = 100;
@@ -449,7 +326,7 @@ int main(void)
 
 
 
-					//testmode = 2;
+					//RunMode = 2;
 
 				}
 				break;
@@ -492,7 +369,7 @@ int main(void)
 					else
 					{
 						StepperIHold(true);
-						pos_motL =(int)(AlphaBeta[0]*573);
+						pos_motL =(int)(AlphaBeta[1]*573);
 						pos_motR =(int)(AlphaBeta[1]*573);
 						if (StepRightenable)
 						{
@@ -525,15 +402,15 @@ int main(void)
 						oldButtPos = ButtPos;
 					}
 
-					//testmode = 2;
+					//RunMode = 2;
 
 				}
 				break;
 		   		default:
 				{
-					testmode = 0;
+					RunMode = 0;
 				}
-		   }  //end switch (testmode)
+		   }  //end switch (RunMode)
 	   } // end if systickexp
     } //end while
     return 0;

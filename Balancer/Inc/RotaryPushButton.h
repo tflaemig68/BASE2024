@@ -16,7 +16,7 @@
 #include <stdbool.h>
 #include <Balancer.h>
 
-#define ERROR_VALUE 		-65535
+#define ERROR_VALUE 		(int16_t)-65535
 
 //Define, if BALA2024 controller is used
 #ifdef BALA2024
@@ -93,5 +93,8 @@ extern int getRotaryPushButton(void);
 
 /* Gets the rotary encoder position */
 extern int getRotaryPosition(void);
+
+
+extern uint16_t setRotaryPosition(int32_t position);
 
 #endif /* ROTARYPUSHBUTTON_H */

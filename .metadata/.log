@@ -1,0 +1,1097 @@
+!SESSION 2024-07-20 15:24:39.192 -----------------------------------------------
+eclipse.buildId=Version 1.12.0
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_DE
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data D:\GITHUB\STM32\BASE2024
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-07-20 15:24:46.139
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-07-20 15:24:46.153
+!MESSAGE Log4j2 initialized with config file D:\GITHUB\STM32\BASE2024\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-07-20 15:24:50.394
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 15:26:07.986
+!MESSAGE Indexed 'CMSIS' (1 sources, 54 headers) in 7,84 sec: 16.414 declarations; 26.566 references; 2 unresolved inclusions; 41 syntax errors; 145 unresolved names (0,34 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 15:27:10.281
+!MESSAGE Indexed 'MCAL' (24 sources, 80 headers) in 1,57 sec: 5.893 declarations; 17.421 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0,0086 %)
+!SESSION 2024-07-20 15:29:29.287 -----------------------------------------------
+eclipse.buildId=Version 1.12.0
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_DE
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data file:/D:/GITHUB/STM32/BASE2024/
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-07-20 15:29:34.967
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-07-20 15:29:34.969
+!MESSAGE Log4j2 initialized with config file D:\GITHUB\STM32\BASE2024\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-07-20 15:29:40.086
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 15:30:42.350
+!MESSAGE Indexed 'Balancer' (5 sources, 72 headers) in 2,96 sec: 5.390 declarations; 8.624 references; 0 unresolved inclusions; 1 syntax errors; 44 unresolved names (0,31 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 15:31:21.648
+!MESSAGE Indexed 'BALi' (4 sources, 59 headers) in 0,964 sec: 3.555 declarations; 5.685 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 18:03:07.802
+!MESSAGE Indexed 'Bala24' (4 sources, 77 headers) in 0,939 sec: 4.494 declarations; 6.550 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0,018 %)
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:04:00.584
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:04:00.584
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:04:00.584
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:04:00.585
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:05:16.067
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:05:16.067
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:05:16.067
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:05:16.068
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:08:45.531
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:08:45.531
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:08:45.531
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:08:45.531
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:08:49.829
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:08:49.829
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:08:49.829
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:08:49.829
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:08:56.194
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:08:56.194
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:08:56.194
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:08:56.195
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:09:36.944
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:09:36.944
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:09:36.944
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:09:36.945
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:11:52.791
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:11:52.791
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:11:52.791
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:11:52.792
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:12:12.696
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:12:12.697
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:12:12.697
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:12:12.697
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:12:46.504
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:12:46.504
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:12:46.504
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:12:46.504
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 18:14:16.685
+!MESSAGE Indexed 'Bala24' (4 sources, 77 headers) in 0,582 sec: 4.494 declarations; 6.550 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0,018 %)
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:14:18.484
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:14:18.484
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:14:18.484
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:14:18.485
+!MESSAGE Project is null
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2024-07-20 18:30:25.508
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:33:16.178
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:33:16.178
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:33:16.178
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:33:16.178
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:33:44.094
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:33:44.094
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:33:44.094
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:33:44.094
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2024-07-20 18:34:15.827
+!MESSAGE Project 'BALi' is not open.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException(/BALi)[372]: java.lang.Exception: Project 'BALi' is not open.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.resources.Project.checkAccessible(Project.java:148)
+	at org.eclipse.core.internal.resources.Project.getDescription(Project.java:392)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.cacheNaturesIdsUsedOnCache(ConfigurationDataProvider.java:383)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.loadConfiguration(ConfigurationDataProvider.java:580)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:139)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:199)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:510)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:240)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:427)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:409)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:403)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:396)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.isNewStyleProject(CProjectDescriptionManager.java:2464)
+	at org.eclipse.cdt.core.model.CoreModel.isNewStyleProject(CoreModel.java:1457)
+	at org.eclipse.cdt.ui.newui.ManageConfigSelector.getProjects(ManageConfigSelector.java:104)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.hasManagedCdtProjectSelection(HasManagedCdtProjectSelection.java:43)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.test(HasManagedCdtProjectSelection.java:33)
+	at org.eclipse.core.internal.expressions.Property.test(Property.java:65)
+	at org.eclipse.core.expressions.TestExpression.evaluate(TestExpression.java:107)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:79)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:109)
+	at org.eclipse.ui.internal.services.EvaluationReference.changed(EvaluationReference.java:103)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:105)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.processScheduled(EclipseContext.java:356)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.set(EclipseContext.java:372)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.deactivate(EclipseContext.java:679)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerHideProcessor.lambda$1(MenuManagerHideProcessor.java:138)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4035)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3635)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+!SUBENTRY 1 org.eclipse.core.resources 4 372 2024-07-20 18:34:15.827
+!MESSAGE Project 'BALi' is not open.
+!STACK 0
+java.lang.Exception: Project 'BALi' is not open.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.resources.Project.checkAccessible(Project.java:148)
+	at org.eclipse.core.internal.resources.Project.getDescription(Project.java:392)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.cacheNaturesIdsUsedOnCache(ConfigurationDataProvider.java:383)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.loadConfiguration(ConfigurationDataProvider.java:580)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:139)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:199)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:510)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:240)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:427)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:409)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:403)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:396)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.isNewStyleProject(CProjectDescriptionManager.java:2464)
+	at org.eclipse.cdt.core.model.CoreModel.isNewStyleProject(CoreModel.java:1457)
+	at org.eclipse.cdt.ui.newui.ManageConfigSelector.getProjects(ManageConfigSelector.java:104)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.hasManagedCdtProjectSelection(HasManagedCdtProjectSelection.java:43)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.test(HasManagedCdtProjectSelection.java:33)
+	at org.eclipse.core.internal.expressions.Property.test(Property.java:65)
+	at org.eclipse.core.expressions.TestExpression.evaluate(TestExpression.java:107)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:79)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:109)
+	at org.eclipse.ui.internal.services.EvaluationReference.changed(EvaluationReference.java:103)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:105)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.processScheduled(EclipseContext.java:356)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.set(EclipseContext.java:372)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.deactivate(EclipseContext.java:679)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerHideProcessor.lambda$1(MenuManagerHideProcessor.java:138)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4035)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3635)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+
+!ENTRY org.eclipse.core.resources 4 372 2024-07-20 18:34:15.842
+!MESSAGE Project 'BALi' is not open.
+!STACK 0
+java.lang.Exception: Project 'BALi' is not open.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.resources.Project.checkAccessible(Project.java:148)
+	at org.eclipse.core.internal.resources.Resource.checkAccessibleAndLocal(Resource.java:210)
+	at org.eclipse.core.internal.resources.Resource.getPersistentProperty(Resource.java:1130)
+	at org.eclipse.cdt.make.internal.core.scannerconfig.DiscoveredScannerInfoStore.getDiscoveredScannerConfigStore(DiscoveredScannerInfoStore.java:331)
+	at org.eclipse.cdt.make.internal.core.scannerconfig.DiscoveredScannerInfoStore.getDocument(DiscoveredScannerInfoStore.java:163)
+	at org.eclipse.cdt.make.internal.core.scannerconfig.DiscoveredScannerInfoStore.getRootElement(DiscoveredScannerInfoStore.java:136)
+	at org.eclipse.cdt.make.internal.core.scannerconfig.DiscoveredScannerInfoStore.hasInfo(DiscoveredScannerInfoStore.java:123)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.loadPathInfo(CfgDiscoveredPathManager.java:299)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getDiscoveredInfo(CfgDiscoveredPathManager.java:177)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ProfileInfoProvider.getEntryValues(ProfileInfoProvider.java:68)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.getDiscoveredEntries(BuildEntryStorage.java:203)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.putEntriesToLevel(BuildEntryStorage.java:193)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.initCache(AbstractEntryStorage.java:74)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.getEntries(AbstractEntryStorage.java:37)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.getEntries(BuildLanguageData.java:163)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.getEntriesToCopy(CDefaultLanguageData.java:100)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.createStore(CDefaultLanguageData.java:91)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.copySettingsFrom(CDefaultLanguageData.java:84)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.copySettingsFrom(CLanguageSettingCache.java:49)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.<init>(CLanguageSettingCache.java:38)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.copyLanguageData(CFolderDescriptionCache.java:82)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultFolderData.copyDataFrom(CDefaultFolderData.java:60)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.<init>(CFolderDescriptionCache.java:40)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.copyFolderData(CConfigurationDescriptionCache.java:242)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultConfigurationData.copySettingsFrom(CDefaultConfigurationData.java:117)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:154)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:199)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:510)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:240)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:427)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:409)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:403)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:396)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.isNewStyleProject(CProjectDescriptionManager.java:2464)
+	at org.eclipse.cdt.core.model.CoreModel.isNewStyleProject(CoreModel.java:1457)
+	at org.eclipse.cdt.ui.newui.ManageConfigSelector.getProjects(ManageConfigSelector.java:104)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.hasManagedCdtProjectSelection(HasManagedCdtProjectSelection.java:43)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.test(HasManagedCdtProjectSelection.java:33)
+	at org.eclipse.core.internal.expressions.Property.test(Property.java:65)
+	at org.eclipse.core.expressions.TestExpression.evaluate(TestExpression.java:107)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:79)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:109)
+	at org.eclipse.ui.internal.services.EvaluationReference.changed(EvaluationReference.java:103)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:105)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.processScheduled(EclipseContext.java:356)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.set(EclipseContext.java:372)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.deactivate(EclipseContext.java:679)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerHideProcessor.lambda$1(MenuManagerHideProcessor.java:138)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4035)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3635)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+
+!ENTRY org.eclipse.core.resources 4 372 2024-07-20 18:34:15.843
+!MESSAGE Project 'BALi' is not open.
+!STACK 0
+java.lang.Exception: Project 'BALi' is not open.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.resources.Project.checkAccessible(Project.java:148)
+	at org.eclipse.core.internal.resources.Resource.checkAccessibleAndLocal(Resource.java:210)
+	at org.eclipse.core.internal.resources.Resource.setPersistentProperty(Resource.java:1691)
+	at org.eclipse.cdt.make.internal.core.scannerconfig.DiscoveredScannerInfoStore.getDiscoveredScannerConfigStore(DiscoveredScannerInfoStore.java:340)
+	at org.eclipse.cdt.make.internal.core.scannerconfig.DiscoveredScannerInfoStore.getDocument(DiscoveredScannerInfoStore.java:163)
+	at org.eclipse.cdt.make.internal.core.scannerconfig.DiscoveredScannerInfoStore.getRootElement(DiscoveredScannerInfoStore.java:136)
+	at org.eclipse.cdt.make.internal.core.scannerconfig.DiscoveredScannerInfoStore.hasInfo(DiscoveredScannerInfoStore.java:123)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.loadPathInfo(CfgDiscoveredPathManager.java:299)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getDiscoveredInfo(CfgDiscoveredPathManager.java:177)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ProfileInfoProvider.getEntryValues(ProfileInfoProvider.java:68)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.getDiscoveredEntries(BuildEntryStorage.java:203)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.putEntriesToLevel(BuildEntryStorage.java:193)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.initCache(AbstractEntryStorage.java:74)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.getEntries(AbstractEntryStorage.java:37)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.getEntries(BuildLanguageData.java:163)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.getEntriesToCopy(CDefaultLanguageData.java:100)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.createStore(CDefaultLanguageData.java:91)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.copySettingsFrom(CDefaultLanguageData.java:84)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.copySettingsFrom(CLanguageSettingCache.java:49)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.<init>(CLanguageSettingCache.java:38)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.copyLanguageData(CFolderDescriptionCache.java:82)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultFolderData.copyDataFrom(CDefaultFolderData.java:60)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.<init>(CFolderDescriptionCache.java:40)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.copyFolderData(CConfigurationDescriptionCache.java:242)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultConfigurationData.copySettingsFrom(CDefaultConfigurationData.java:117)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:154)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:199)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:510)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:240)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:427)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:409)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:403)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:396)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.isNewStyleProject(CProjectDescriptionManager.java:2464)
+	at org.eclipse.cdt.core.model.CoreModel.isNewStyleProject(CoreModel.java:1457)
+	at org.eclipse.cdt.ui.newui.ManageConfigSelector.getProjects(ManageConfigSelector.java:104)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.hasManagedCdtProjectSelection(HasManagedCdtProjectSelection.java:43)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.test(HasManagedCdtProjectSelection.java:33)
+	at org.eclipse.core.internal.expressions.Property.test(Property.java:65)
+	at org.eclipse.core.expressions.TestExpression.evaluate(TestExpression.java:107)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:79)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:109)
+	at org.eclipse.ui.internal.services.EvaluationReference.changed(EvaluationReference.java:103)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:105)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.processScheduled(EclipseContext.java:356)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.set(EclipseContext.java:372)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.deactivate(EclipseContext.java:679)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerHideProcessor.lambda$1(MenuManagerHideProcessor.java:138)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4035)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3635)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2024-07-20 18:34:15.851
+!MESSAGE Project 'BALi' is not open.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException(/BALi)[372]: java.lang.Exception: Project 'BALi' is not open.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.resources.Project.checkAccessible(Project.java:148)
+	at org.eclipse.core.internal.resources.Project.getDescription(Project.java:392)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.cacheNaturesIdsUsedOnCache(ConfigurationDataProvider.java:383)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.loadConfiguration(ConfigurationDataProvider.java:580)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:139)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:199)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:510)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:240)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:427)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:409)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:403)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:396)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.isNewStyleProject(CProjectDescriptionManager.java:2464)
+	at org.eclipse.cdt.core.model.CoreModel.isNewStyleProject(CoreModel.java:1457)
+	at org.eclipse.cdt.ui.newui.ManageConfigSelector.getProjects(ManageConfigSelector.java:104)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.hasManagedCdtProjectSelection(HasManagedCdtProjectSelection.java:43)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.test(HasManagedCdtProjectSelection.java:33)
+	at org.eclipse.core.internal.expressions.Property.test(Property.java:65)
+	at org.eclipse.core.expressions.TestExpression.evaluate(TestExpression.java:107)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:79)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:109)
+	at org.eclipse.ui.internal.services.EvaluationReference.changed(EvaluationReference.java:103)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:105)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.processScheduled(EclipseContext.java:356)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.set(EclipseContext.java:372)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.deactivate(EclipseContext.java:679)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerHideProcessor.lambda$1(MenuManagerHideProcessor.java:138)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4035)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3635)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+!SUBENTRY 1 org.eclipse.core.resources 4 372 2024-07-20 18:34:15.851
+!MESSAGE Project 'BALi' is not open.
+!STACK 0
+java.lang.Exception: Project 'BALi' is not open.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.resources.Project.checkAccessible(Project.java:148)
+	at org.eclipse.core.internal.resources.Project.getDescription(Project.java:392)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.cacheNaturesIdsUsedOnCache(ConfigurationDataProvider.java:383)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.loadConfiguration(ConfigurationDataProvider.java:580)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:139)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:199)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:510)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:240)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:427)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:409)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:403)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:396)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.isNewStyleProject(CProjectDescriptionManager.java:2464)
+	at org.eclipse.cdt.core.model.CoreModel.isNewStyleProject(CoreModel.java:1457)
+	at org.eclipse.cdt.ui.newui.ManageConfigSelector.getProjects(ManageConfigSelector.java:104)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.hasManagedCdtProjectSelection(HasManagedCdtProjectSelection.java:43)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.test(HasManagedCdtProjectSelection.java:33)
+	at org.eclipse.core.internal.expressions.Property.test(Property.java:65)
+	at org.eclipse.core.expressions.TestExpression.evaluate(TestExpression.java:107)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:79)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:109)
+	at org.eclipse.ui.internal.services.EvaluationReference.changed(EvaluationReference.java:103)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:105)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.processScheduled(EclipseContext.java:356)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.set(EclipseContext.java:372)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.deactivate(EclipseContext.java:679)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerHideProcessor.lambda$1(MenuManagerHideProcessor.java:138)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4035)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3635)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+
+!ENTRY org.eclipse.cdt.core 4 0 2024-07-20 18:34:15.859
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: attempt to set description for a project which does not exist or not open
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.setCurrentDescription(XmlProjectDescriptionStorage.java:383)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.setLoaddedDescriptionOnLoad(XmlProjectDescriptionStorage.java:361)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:259)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:427)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:409)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:403)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:396)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.isNewStyleProject(CProjectDescriptionManager.java:2464)
+	at org.eclipse.cdt.core.model.CoreModel.isNewStyleProject(CoreModel.java:1457)
+	at org.eclipse.cdt.ui.newui.ManageConfigSelector.getProjects(ManageConfigSelector.java:104)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.hasManagedCdtProjectSelection(HasManagedCdtProjectSelection.java:43)
+	at org.eclipse.cdt.internal.ui.workingsets.HasManagedCdtProjectSelection.test(HasManagedCdtProjectSelection.java:33)
+	at org.eclipse.core.internal.expressions.Property.test(Property.java:65)
+	at org.eclipse.core.expressions.TestExpression.evaluate(TestExpression.java:107)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:79)
+	at org.eclipse.ui.internal.services.EvaluationReference.evaluate(EvaluationReference.java:109)
+	at org.eclipse.ui.internal.services.EvaluationReference.changed(EvaluationReference.java:103)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:105)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.processScheduled(EclipseContext.java:356)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.set(EclipseContext.java:372)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.deactivate(EclipseContext.java:679)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerHideProcessor.lambda$1(MenuManagerHideProcessor.java:138)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4035)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3635)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+!SUBENTRY 1 org.eclipse.cdt.core 4 -1 2024-07-20 18:34:15.859
+!MESSAGE attempt to set description for a project which does not exist or not open
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:36:11.283
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:36:11.283
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:36:11.283
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:36:11.284
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:36:18.851
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:36:18.851
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:36:18.851
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:36:18.852
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:36:56.910
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:36:56.910
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:36:56.910
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:36:56.912
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:37:09.761
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:37:09.761
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:37:09.761
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:37:09.762
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:37:16.799
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:37:16.799
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:37:16.799
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:37:16.800
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:37:33.020
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:37:33.020
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:37:33.020
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:37:33.020
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:38:21.464
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:38:21.464
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:38:21.464
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:38:21.464
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:38:46.219
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:38:46.219
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:38:46.219
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:38:46.220
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 18:39:52.863
+!MESSAGE Indexed 'Bala24' (4 sources, 77 headers) in 0,51 sec: 4.496 declarations; 6.541 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0,018 %)
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:40:00.165
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:40:00.165
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:40:00.165
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:40:00.166
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:40:12.387
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:40:12.387
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:40:12.387
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:40:12.387
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:40:22.709
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:40:22.709
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:40:22.709
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:40:22.710
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:42:12.856
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:42:12.856
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:42:12.856
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:42:12.857
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:42:55.729
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:42:55.729
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:42:55.729
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:42:55.730
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:42:59.796
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:42:59.796
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:42:59.796
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:42:59.797
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:43:33.089
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:43:33.089
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:43:33.089
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:43:33.089
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:43:53.040
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:43:53.040
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:43:53.040
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:43:53.040
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:44:49.489
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:44:49.489
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:44:49.489
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:44:49.490
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:45:06.928
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:45:06.928
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:45:06.928
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:45:06.930
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:45:50.989
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:45:50.989
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:45:50.989
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:45:50.990
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:46:27.718
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:46:27.718
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:46:27.718
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:46:27.719
+!MESSAGE Project is null
+!SESSION 2024-07-20 18:47:09.956 -----------------------------------------------
+eclipse.buildId=Version 1.12.0
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_DE
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-07-20 18:47:15.691
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-07-20 18:47:15.693
+!MESSAGE Log4j2 initialized with config file D:\GITHUB\STM32\BASE2024\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-07-20 18:47:22.487
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:47:44.836
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:47:44.836
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:47:44.836
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:47:44.837
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:47:49.722
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:47:49.722
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:47:49.722
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:47:49.723
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:47:53.008
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:47:53.008
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:47:53.008
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:47:53.008
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:48:00.872
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:48:00.872
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:48:00.872
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:48:00.873
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:49:22.489
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:49:22.489
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:49:22.489
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:49:22.490
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 18:51:19.515
+!MESSAGE Indexed 'Bala24' (4 sources, 77 headers) in 1,51 sec: 4.496 declarations; 6.541 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0,018 %)
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:51:20.207
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:51:20.207
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:51:20.207
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:51:20.207
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:51:35.843
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:51:35.843
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:51:35.843
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:51:35.844
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 18:51:56.049
+!MESSAGE Indexed 'Bala24' (4 sources, 77 headers) in 0,811 sec: 4.496 declarations; 6.541 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0,018 %)
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:52:06.511
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:52:06.511
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:52:06.511
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:52:06.511
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:53:52.807
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:53:52.807
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:53:52.807
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:53:52.808
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:55:15.358
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:55:15.358
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:55:15.358
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:55:15.358
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:55:37.267
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:55:37.267
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:55:37.267
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:55:37.267
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:55:47.769
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:55:47.769
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:55:47.769
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:55:47.770
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:56:05.312
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:56:05.313
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:56:05.313
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:56:05.313
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 18:56:16.834
+!MESSAGE Indexed 'Bala24' (4 sources, 77 headers) in 0,87 sec: 4.496 declarations; 6.541 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0,018 %)
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:56:17.141
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:56:17.141
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:56:17.141
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:56:17.142
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:56:48.169
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:56:48.169
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:56:48.169
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:56:48.170
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:56:59.125
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:56:59.125
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:56:59.125
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:56:59.126
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 18:57:41.469
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 18:57:41.469
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 18:57:41.469
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 18:57:41.470
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 19:00:08.050
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 19:00:08.050
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 19:00:08.050
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 19:00:08.051
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 19:00:18.997
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 19:00:18.997
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 19:00:18.997
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 19:00:18.998
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 19:00:20.425
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 19:00:20.425
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 19:00:20.425
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 19:00:20.425
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 19:01:25.806
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 19:01:25.806
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 19:01:25.806
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 19:01:25.807
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 19:04:23.123
+!MESSAGE Indexed 'Balancer' (7 sources, 74 headers) in 0,895 sec: 5.887 declarations; 11.089 references; 0 unresolved inclusions; 1 syntax errors; 44 unresolved names (0,26 %)
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 19:12:04.471
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 19:12:04.471
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 19:12:04.471
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 19:12:04.472
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-07-20 19:19:25.486
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-07-20 19:19:25.486
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-07-20 19:19:25.486
+!MESSAGE D:\GITHUB\STM32\BASE2024\Bala24 overlaps the location of another project: 'Bala24'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-07-20 19:19:25.487
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 19:19:43.318
+!MESSAGE Indexed 'TOFTest' (5 sources, 77 headers) in 0,904 sec: 4.508 declarations; 6.676 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0,018 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 19:20:19.845
+!MESSAGE Indexed 'TOFTest' (5 sources, 77 headers) in 0,584 sec: 4.508 declarations; 6.676 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0,018 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-07-20 19:21:03.792
+!MESSAGE Indexed 'TOFTest' (5 sources, 77 headers) in 0,684 sec: 4.508 declarations; 6.676 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0,018 %)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2024-07-20 19:53:44.119
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2024-07-20 19:53:50.143
+!MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2024-07-20 19:54:02.265
+!MESSAGE Won't launch debug session since we failed to locate the binary.

@@ -1,0 +1,16 @@
+19:16:21 **** Incremental Build of configuration Debug for project Bala24 ****
+make -j8 all 
+arm-none-eabi-gcc -o "Bala24.elf" @"objects.list"  -lBalancer -lMCAL -mcpu=cortex-m4 -T"D:\GITHUB\STM32\BASE2024\Bala24\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bala24.map" -Wl,--gc-sections -static -L"D:\GITHUB\STM32\BASE2024\Balancer\Debug\Src" -L"D:\GITHUB\STM32\BASE2024\Balancer\Debug" -L"D:\GITHUB\STM32\BASE2024\CMSIS\Debug" -L"D:\GITHUB\STM32\BASE2024\MCAL\Debug" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bala24.elf
+ 
+arm-none-eabi-size   Bala24.elf 
+arm-none-eabi-objdump -h -S  Bala24.elf  > "Bala24.list"
+   text	   data	    bss	    dec	    hex	filename
+  49552	    512	   1680	  51744	   ca20	Bala24.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bala24.list
+ 
+
+19:16:21 Build Finished. 0 errors, 0 warnings. (took 628ms)
+
