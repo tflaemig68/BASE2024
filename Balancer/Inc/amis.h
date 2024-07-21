@@ -74,21 +74,24 @@ struct Stepper {
   uint8Parameter_t pwmFrequency; // ToDo: add name and description and setup
   uint8Parameter_t pwmJitter; // ToDo: add name and description and setup
   uint8Parameter_t relativeMotionThreshold; // ToDo: add name and description and setup
-  void (*init)(Stepper_t*, I2C_TypeDef*, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint16_t);
+  //void (*init)(Stepper_t*, I2C_TypeDef*, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint16_t);
   Stepper_t* (*get)(Stepper_t*);
   void (*set)(Stepper_t*, Stepper_t*);
-  void (*getFullStatus1)(Stepper_t*, uint8_t[8]);
-  void (*getFullStatus2)(Stepper_t*, uint8_t[8]);
+  void (*setPos)(Stepper_t* stepper, int16_t value);
   void (*setMotorParam)(Stepper_t*);
   void (*setDualPosition)(Stepper_t*, uint16_t, uint16_t);
   int16_t (*getTargetPosition)(Stepper_t*);
   uint16_t (*getRPM)(Stepper_t*);
   void (*gotoSecurePosition)(Stepper_t*);
-  void (*resetPosition)(Stepper_t*);
   void (*resetToDefault)(Stepper_t*);
-  void (*softStop)(Stepper_t*);
-  void (*hardStop)(Stepper_t*);
 };
+
+
+void StepperInit(Stepper_t* stepper, I2C_TypeDef* i2cBus, uint8_t i2cAddress, uint8_t iRun, uint8_t iHold, uint8_t vMin, uint8_t vMax, uint8_t stepMode, uint8_t rotationDirection, uint8_t acceleration, uint16_t securePosition);
+void StepperSetPos(Stepper_t* stepper, int16_t value);
+void StepperSoftStop(Stepper_t*);
+void StepperHardStop(Stepper_t*);
+void StepperResetPosition (Stepper_t* stepper);
 
 
 // ******************** Stepper ********************

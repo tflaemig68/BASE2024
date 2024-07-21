@@ -1,6 +1,6 @@
-19:57:19 **** Incremental Build of configuration Debug for project MCAL ****
+17:12:50 **** Incremental Build of configuration Debug for project MCAL ****
 make -j8 all 
 make: Nothing to be done for 'all'.
 
-19:57:19 Build Finished. 0 errors, 0 warnings. (took 267ms)
+17:12:51 Build Finished. 0 errors, 0 warnings. (took 253ms)
 
