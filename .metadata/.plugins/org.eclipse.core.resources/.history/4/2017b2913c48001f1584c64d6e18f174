@@ -87,6 +87,7 @@ void StepperHardStop(Stepper_t*);
 void StepperResetPosition(Stepper_t* stepper);
 void StepperResetToDefault(Stepper_t*);
 void StepperGoToSecurePosition(Stepper_t*);
+void StepperSetParam(Stepper_t*);
 void StepperSetDualPosition(Stepper_t*, uint16_t, uint16_t);
 int16_t StepperGetTargetPosition(Stepper_t*);
 uint16_t StepperGetRPM(Stepper_t*);

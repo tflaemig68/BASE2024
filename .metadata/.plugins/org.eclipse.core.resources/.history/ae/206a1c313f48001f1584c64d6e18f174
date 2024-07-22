@@ -92,7 +92,7 @@ int16_t StepperGetTargetPosition(Stepper_t*);
 uint16_t StepperGetRPM(Stepper_t*);
 
 // ******************** Stepper ********************
-extern const Stepper_t stepper;
+extern const Stepper_t Stepper;
 
 
 #ifdef __cplusplus

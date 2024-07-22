@@ -138,7 +138,7 @@ void getFullStatus2(Stepper_t* stepper, uint8_t readArray[8])
  * @param uint8_t rotdir - `TRUE` / `FALSE`
  * @returns void
  */
-void setMotorParam(Stepper_t* stepper)
+void setParam(Stepper_t* stepper)
 {
 	I2C_TypeDef   *i2c;
 	uint8_t Addr = stepper->i2cAddress.value;
@@ -149,37 +149,14 @@ void setMotorParam(Stepper_t* stepper)
 	data[0] = befehl;
 	data[1] = 0xFF;
 	data[2] = 0xFF;
-	data[3] = (stepper->iRun.value << 4) | (stepper->iHold.value);		// uint8_t xxxx|yyyy x=iRun y=iHold
-	data[4] = (stepper->vMax.value << 4) | (stepper->vMin.value);			// uint8_t xxxx|yyyy x=vMax y=vMin
+	data[3] = (stepper->iRun.value << 4) | stepper->iHold.value;		// uint8_t xxxx|yyyy x=iRun y=iHold
+	data[4] = (stepper->vMax.value << 4) | stepper->vMin.value;			// uint8_t xxxx|yyyy x=vMax y=vMin
 	data[5] = (stepper->securePosition.value >> 3) | (stepper->rotationDirection.value << 4) | stepper->acceleration.value;		// uint8_t xxx|y|zzzz   x=securePosition(10:8) y=rotationDirection z=acceleration(3:0)
 	data[6] = (uint8_t) stepper->securePosition.value;					// =securePosition(7:0)
-	// this line for set Stall Param 0x96
-	//data[7] = 0b10100010 | (stepper->pwmFrequency.value << 6) | (stepper->accelerationShape.value << 4) | (stepper->stepMode.value << 2) | stepper->pwmJitter.value;	// uint8_t 1|w|1|x|yy|1|z  w=pwmFrequency x=accelerationShape y=stepMode z=pwmJitter
-	data[7]=0b00001100;				// xxx|y|zz|xx  x=N/A y=AccShape z=stepMode
-	i2cBurstWrite(i2c, Addr, data, 8);
-}
-void setStallParam(Stepper_t* stepper)
-{
-	I2C_TypeDef   *i2c;
-	uint8_t Addr = stepper->i2cAddress.value;
-	i2c = stepper->i2cBus.i2c;
-	uint8_t befehl = (uint8_t) 0x96;
-	uint8_t data[8];
-
-	data[0] = befehl;
-	data[1] = 0xFF;
-	data[2] = 0xFF;
-	data[3] = (stepper->iRun.value << 4) | (stepper->iHold.value);		// uint8_t xxxx|yyyy x=iRun y=iHold
-	data[4] = (stepper->vMax.value << 4) | (stepper->vMin.value);			// uint8_t xxxx|yyyy x=vMax y=vMin
-	data[5] = (stepper->acceleration.value);		// uint8_t xxx|y|zzzz   XXXXXXX  z=acceleration(3:0)
-	data[6] = (uint8_t) stepper->securePosition.value;					// =securePosition(7:0)
-	// this line for set Stall Param 0x96
-	data[7] = 0b10100010 | (stepper->pwmFrequency.value << 6) | (stepper->accelerationShape.value << 4) | (stepper->stepMode.value << 2) | stepper->pwmJitter.value;	// uint8_t ooo|x|yy|d|z  o=FS2Stall x=accelerationShape y=stepMode d =DC100SfEn z=pwmJitter
+	data[7] = 0b10100010 | (stepper->pwmFrequency.value << 6) | (stepper->accelerationShape.value << 4) | (stepper->stepMode.value << 2) | stepper->pwmJitter.value;	// uint8_t 1|w|1|x|yy|1|z  w=pwmFrequency x=accelerationShape y=stepMode z=pwmJitter
 	//data[7]=0b00001100;				// xxx|y|zz|xx  x=N/A y=AccShape z=stepMode
 	i2cBurstWrite(i2c, Addr, data, 8);
 }
-
-
 
 void setIRun(Stepper_t* stepper, uint8_t value)
 {
@@ -210,9 +187,6 @@ uint8_t getIRun(Stepper_t* stepper)
 void setIHold(Stepper_t* stepper, uint8_t value)
 {
 	stepper->iHold.value = value;
-
-
-
 	setParam(stepper);
 }
 
@@ -767,7 +741,7 @@ void StepperInit(Stepper_t* stepper, I2C_TypeDef* i2cBus, uint8_t i2cAddress, ui
 	uint8_t data[8];
 	getFullStatus1(stepper, data);
 	getFullStatus2(stepper, data);
-	setMotorParam(stepper);
+	setParam(stepper);
 
 	StepperResetPosition(stepper); 			/*
 												 * reset stepper Position wird auf 0

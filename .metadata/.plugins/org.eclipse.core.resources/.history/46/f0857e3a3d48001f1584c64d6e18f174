@@ -138,7 +138,7 @@ void getFullStatus2(Stepper_t* stepper, uint8_t readArray[8])
  * @param uint8_t rotdir - `TRUE` / `FALSE`
  * @returns void
  */
-void setMotorParam(Stepper_t* stepper)
+void setParam(Stepper_t* stepper)
 {
 	I2C_TypeDef   *i2c;
 	uint8_t Addr = stepper->i2cAddress.value;
@@ -149,37 +149,14 @@ void setMotorParam(Stepper_t* stepper)
 	data[0] = befehl;
 	data[1] = 0xFF;
 	data[2] = 0xFF;
-	data[3] = (stepper->iRun.value << 4) | (stepper->iHold.value);		// uint8_t xxxx|yyyy x=iRun y=iHold
-	data[4] = (stepper->vMax.value << 4) | (stepper->vMin.value);			// uint8_t xxxx|yyyy x=vMax y=vMin
+	data[3] = (stepper->iRun.value << 4) | stepper->iHold.value;		// uint8_t xxxx|yyyy x=iRun y=iHold
+	data[4] = (stepper->vMax.value << 4) | stepper->vMin.value;			// uint8_t xxxx|yyyy x=vMax y=vMin
 	data[5] = (stepper->securePosition.value >> 3) | (stepper->rotationDirection.value << 4) | stepper->acceleration.value;		// uint8_t xxx|y|zzzz   x=securePosition(10:8) y=rotationDirection z=acceleration(3:0)
 	data[6] = (uint8_t) stepper->securePosition.value;					// =securePosition(7:0)
-	// this line for set Stall Param 0x96
-	//data[7] = 0b10100010 | (stepper->pwmFrequency.value << 6) | (stepper->accelerationShape.value << 4) | (stepper->stepMode.value << 2) | stepper->pwmJitter.value;	// uint8_t 1|w|1|x|yy|1|z  w=pwmFrequency x=accelerationShape y=stepMode z=pwmJitter
-	data[7]=0b00001100;				// xxx|y|zz|xx  x=N/A y=AccShape z=stepMode
-	i2cBurstWrite(i2c, Addr, data, 8);
-}
-void setStallParam(Stepper_t* stepper)
-{
-	I2C_TypeDef   *i2c;
-	uint8_t Addr = stepper->i2cAddress.value;
-	i2c = stepper->i2cBus.i2c;
-	uint8_t befehl = (uint8_t) 0x96;
-	uint8_t data[8];
-
-	data[0] = befehl;
-	data[1] = 0xFF;
-	data[2] = 0xFF;
-	data[3] = (stepper->iRun.value << 4) | (stepper->iHold.value);		// uint8_t xxxx|yyyy x=iRun y=iHold
-	data[4] = (stepper->vMax.value << 4) | (stepper->vMin.value);			// uint8_t xxxx|yyyy x=vMax y=vMin
-	data[5] = (stepper->acceleration.value);		// uint8_t xxx|y|zzzz   XXXXXXX  z=acceleration(3:0)
-	data[6] = (uint8_t) stepper->securePosition.value;					// =securePosition(7:0)
-	// this line for set Stall Param 0x96
-	data[7] = 0b10100010 | (stepper->pwmFrequency.value << 6) | (stepper->accelerationShape.value << 4) | (stepper->stepMode.value << 2) | stepper->pwmJitter.value;	// uint8_t ooo|x|yy|d|z  o=FS2Stall x=accelerationShape y=stepMode d =DC100SfEn z=pwmJitter
+	data[7] = 0b10100010 | (stepper->pwmFrequency.value << 6) | (stepper->accelerationShape.value << 4) | (stepper->stepMode.value << 2) | stepper->pwmJitter.value;	// uint8_t 1|w|1|x|yy|1|z  w=pwmFrequency x=accelerationShape y=stepMode z=pwmJitter
 	//data[7]=0b00001100;				// xxx|y|zz|xx  x=N/A y=AccShape z=stepMode
 	i2cBurstWrite(i2c, Addr, data, 8);
 }
-
-
 
 void setIRun(Stepper_t* stepper, uint8_t value)
 {
@@ -210,9 +187,6 @@ uint8_t getIRun(Stepper_t* stepper)
 void setIHold(Stepper_t* stepper, uint8_t value)
 {
 	stepper->iHold.value = value;
-
-
-
 	setParam(stepper);
 }
 
@@ -293,7 +267,7 @@ uint8_t getVMax(Stepper_t* stepper)
  * @param uint8_t value `0x0` .. `0x3` - for more information view data sheet 
  * @returns void
  */
-void setStepMode(Stepper_t* stepper, uint8_t value)
+void getStepMode(Stepper_t* stepper, uint8_t value)
 {
 	stepper->stepMode.value = value;
 	setParam(stepper);
@@ -335,7 +309,7 @@ void setRotDir(Stepper_t* stepper, uint8_t value)
  * @param Stepper_t* stepper - the stepper to read the rotation direction from
  * @returns uint8_t - returns 0 or 1
  */
-uint8_t getRotDir(Stepper_t* stepper)
+uint8_t getRotaDir(Stepper_t* stepper)
 {
 	uint8_t data[8], ui_ret;
 	getFullStatus1(stepper, data);
@@ -351,7 +325,7 @@ uint8_t getRotDir(Stepper_t* stepper)
  * @param uint32_t value - the acceleration value
  * @returns void
  */
-void setAccel(Stepper_t* stepper, uint8_t value)
+void StepperSetAccel(Stepper_t* stepper, uint8_t value)
 {
 	stepper->acceleration.value = value;
 	setParam(stepper);
@@ -362,7 +336,7 @@ void setAccel(Stepper_t* stepper, uint8_t value)
  * @param Stepper_t* stepper - the stepper to read the acceleration from
  * @returns uint8_t - the acceleration value: 0x0 .. 0xF, 49Full−step/s^2 .. 40047Full−step/s^2 - for more information view data sheet
  */
-uint8_t getAccel(Stepper_t* stepper)
+uint8_t StepperGetAccel(Stepper_t* stepper)
 {
 	uint8_t data[8], ui_ret;
 	getFullStatus1(stepper, data);
@@ -377,7 +351,7 @@ uint8_t getAccel(Stepper_t* stepper)
  * @param uint8_t value - the shaft value
  * @returns void
  */
-void setSecPos(Stepper_t* stepper, uint16_t value)
+void StepperSetSecPos(Stepper_t* stepper, uint16_t value)
 {
 	stepper->securePosition.value = value;
 	setParam(stepper);
@@ -391,7 +365,7 @@ void setSecPos(Stepper_t* stepper, uint16_t value)
  * @param Stepper_t* stepper - the stepper to read the secure position from
  * @returns uint32_t - the secure position of the stepper 
  */
-uint16_t getSecPos(Stepper_t* stepper)
+uint16_t StepperGetSecPos(Stepper_t* stepper)
 {
 	uint8_t data[8], ui_ret;
 	getFullStatus2(stepper, data);
@@ -408,7 +382,7 @@ uint16_t getSecPos(Stepper_t* stepper)
  * @param uint8_t value - 0x0 / 0x1, `0`: normal acceleration from vMin to vMax, `1`: motion at vMin without acceleration - for more information view data sheet 
  * @returns void
  */
-void setAccelShape(Stepper_t* stepper, uint8_t value)
+void StepperSetAccelShape(Stepper_t* stepper, uint8_t value)
 {
 	stepper->accelerationShape.value = value;
 	setParam(stepper);
@@ -420,7 +394,7 @@ void setAccelShape(Stepper_t* stepper, uint8_t value)
  * @param Stepper_t* stepper - the stepper to read the acceleration shape from
  * @returns uint8_t `0`: normal acceleration from vMin to vMax, `1`: motion at vMin without acceleration
  */
-uint8_t getAccelShape(Stepper_t* stepper)
+uint8_t StepperGetAccelShape(Stepper_t* stepper)
 {
 	uint8_t data[8], ui_ret;
 	getFullStatus1(stepper, data);
@@ -767,7 +741,7 @@ void StepperInit(Stepper_t* stepper, I2C_TypeDef* i2cBus, uint8_t i2cAddress, ui
 	uint8_t data[8];
 	getFullStatus1(stepper, data);
 	getFullStatus2(stepper, data);
-	setMotorParam(stepper);
+	setParam(stepper);
 
 	StepperResetPosition(stepper); 			/*
 												 * reset stepper Position wird auf 0
@@ -860,22 +834,22 @@ const Stepper_t stepper = {
 		// do not define default .value here, because the user has to
 		.name = rotationDirectionName,
 		.description = rotationDirectionDescription,
-		.set = setRotDir,
-		.get = getRotDir,
+		.set = setRotationDirection,
+		.get = getRotationDirection,
 	},
 	.acceleration = {
 		// do not define default .value here, because the user has to
 		.name = accelerationName,
 		.description = accelerationDescription,
-		.set = setAccel,
-		.get = getAccel,
+		.set = setAcceleration,
+		.get = getAcceleration,
 	},
 	.accelerationShape = {
 		.value = 0x0,
 		.name = accelerationShapeName,
 		.description = accelerationShapeDescription,
-		.set = setAccelShape,
-		.get = getAccelShape,
+		.set = setAccelerationShape,
+		.get = getAccelerationShape,
 	},
 	.position = {
 		// do not define default .value here, because the user has to
@@ -887,8 +861,8 @@ const Stepper_t stepper = {
 		// do not define default .value here, because the user has to
 		.name = securePositionName,
 		.description = securePositionDescription,
-		.set = setSecPos,
-		.get = getSecPos,
+		.set = setSecurePosition,
+		.get = getSecurePosition,
 	},
 	.pwmFrequency = {
 		.value = 0x0,

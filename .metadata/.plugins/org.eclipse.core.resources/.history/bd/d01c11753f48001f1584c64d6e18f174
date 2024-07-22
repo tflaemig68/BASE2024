@@ -404,8 +404,8 @@ int main(void)
 void StepperIHold(bool on)
 {
 	static bool status_off = false;
-	const uint8_t Ihold = 7;
-	const uint8_t Ioff = 1;
+	const uint8_t Ihold = 10;
+	const uint8_t Ioff = 0;
 	if (on == status_off)
 	{
 		if (on)

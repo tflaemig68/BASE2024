@@ -342,7 +342,9 @@ int main(void)
 					}
 					if (fabs(AlphaBeta[1]) > 0.7)  //ca pi/4
 					{
-						StepperIHold(false);
+						setRotaryColor(LED_MAGENTA);
+						//StepperIHold(false);
+
 						StepperSoftStop(&StepR);
 						StepperSoftStop(&StepL);			//softStop(i2cAddr_motL);
 
@@ -353,7 +355,7 @@ int main(void)
 					}
 					else
 					{
-						StepperIHold(true);
+						//StepperIHold(true);
 						pos_motL =(int16_t)(AlphaBeta[1]*573);
 						pos_motR =(int16_t)(AlphaBeta[1]*573);
 						if (StepRenable)
@@ -404,22 +406,20 @@ int main(void)
 void StepperIHold(bool on)
 {
 	static bool status_off = false;
-	const uint8_t Ihold = 7;
-	const uint8_t Ioff = 1;
+	const uint8_t Ihold = 10;
+	const uint8_t Ioff = 0;
 	if (on == status_off)
 	{
 		if (on)
 		{
-			stepper.iRun.set(&StepL, Ihold);
-			setRotaryColor(LED_YELLOW);
+			StepL.iRun.set(&StepL, Ihold)
 			//StepL.iRun.value = Ihold;
 			//setIhold(i2cAddr_motL,Ihold);
 			//setIhold(i2cAddr_motR,Ihold);
 		}
 		else
 		{
-			setRotaryColor(LED_MAGENTA);
-			stepper.iRun.set(&StepL, Ioff);
+			StepL.iRun.set(&StepL, Ioff)
 			//StepL.iRun.value = Ioff;
 			//setIhold(i2cAddr_motL,Ioff);
 			//setIhold(i2cAddr_motR,Ioff);
