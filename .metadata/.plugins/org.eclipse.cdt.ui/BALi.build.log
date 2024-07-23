@@ -1,16 +1,10 @@
-17:38:52 **** Incremental Build of configuration Debug for project BALi ****
+09:35:24 **** Incremental Build of configuration Debug for project BALi ****
 make -j8 all 
-arm-none-eabi-gcc -o "BALi.elf" @"objects.list"  -lBalancer -lMCAL -mcpu=cortex-m4 -T"D:\GITHUB\STM32\BASE2024\BALi\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BALi.map" -Wl,--gc-sections -static -L"D:\GITHUB\STM32\BASE2024\MCAL\Debug" -L"D:\GITHUB\STM32\BASE2024\CMSIS\Debug" -L"D:\GITHUB\STM32\BASE2024\MCAL\Debug\Src" -L"D:\GITHUB\STM32\BASE2024\Balancer\Debug" -L"D:\GITHUB\STM32\BASE2024\Balancer\Debug\Src" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: BALi.elf
- 
 arm-none-eabi-size   BALi.elf 
-arm-none-eabi-objdump -h -S  BALi.elf  > "BALi.list"
    text	   data	    bss	    dec	    hex	filename
-  43408	   1400	   2336	  47144	   b828	BALi.elf
+  43760	   1400	   2336	  47496	   b988	BALi.elf
 Finished building: default.size.stdout
  
-Finished building: BALi.list
- 
 
-17:38:52 Build Finished. 0 errors, 0 warnings. (took 616ms)
+09:35:24 Build Finished. 0 errors, 0 warnings. (took 260ms)
 

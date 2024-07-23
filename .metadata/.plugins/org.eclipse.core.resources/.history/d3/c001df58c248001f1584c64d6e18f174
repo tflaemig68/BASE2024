@@ -226,7 +226,7 @@ uint8_t getIRun(Stepper_t* stepper)
 void setIHold(Stepper_t* stepper, uint8_t value)
 {
 	stepper->iHold.value = value;
-	setMotorParam(stepper);
+	setStallParam5(stepper);
 }
 
 /**

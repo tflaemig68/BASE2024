@@ -45,41 +45,11 @@ void test_ascii_screen(void);
 void test_graphics(void);
 
 uint8_t I2C_SCAN(I2C_TypeDef *i2c, uint8_t scanAddr);
+void StepperIHold(bool on);
+int Regler(int Pos, float phi, float v);
+
 
 struct Stepper StepL, StepR;
-void StepperIHold(bool on);
-const uint8_t iHold = 3;
-void StepperIHold(bool on)
-{
-	static bool status_off = false;
-	const uint8_t iOff = 0x0;
-	if (on == status_off)
-	{
-		if (on)
-		{
-			stepper.iHold.set(&StepL, iHold);
-			setRotaryColor(LED_YELLOW);
-			//StepL.iRun.value = Ihold;
-			//setIhold(i2cAddr_motL,Ihold);
-			//setIhold(i2cAddr_motR,Ihold);
-		}
-		else
-		{
-			setRotaryColor(LED_MAGENTA);
-			stepper.iHold.set(&StepL, iOff);
-			//StepL.iRun.value = Ioff;
-			//setIhold(i2cAddr_motL,Ioff);
-			//setIhold(i2cAddr_motR,Ioff);
-		}
-	}
-
-}
-
-
-
-
-
-int Regler(int Pos, float phi, float v);
 
 
 
@@ -186,7 +156,7 @@ int main(void)
 							   StepLenable = true;
 							   tftPrint((char *)"<-Left STEP\0",0,110,0);
 								//StepL.init(... 						iRun,	iHold, 	vMin,  	vMax, 	stepMode, rotDir, acceleration, securePosition)
-								StepperInit(&StepL, i2c, i2cAddr_motL, 	10, 	iHold,  	2, 		10, 	3, 			1, 		2,			 0);
+								StepperInit(&StepL, i2c, i2cAddr_motL, 	10, 	6,  	2, 		10, 	3, 			1, 		2,			 0);
 
 						   }
 						   break;
@@ -195,7 +165,7 @@ int main(void)
 							   StepRenable = true;
 							   tftPrint((char *)"Right->\0",94,110,0);
 								//StepL.init(... 						iRun,	iHold, 	vMin,  	vMax, 	stepMode, rotDir, acceleration, securePosition)
-							   StepperInit(&StepR, i2c, i2cAddr_motR, 	10, 	iHold,  	2, 		10, 	3, 			0, 		2,			 0);
+							   StepperInit(&StepR, i2c, i2cAddr_motR, 	10, 	6,  	2, 		10, 	3, 			0, 		2,			 0);
 						   }
 						   break;
 					   	   case i2cAddr_RFID:
@@ -431,6 +401,33 @@ int main(void)
 	   } // end if systickexp
     } //end while
     return 0;
+}
+
+void StepperIHold(bool on)
+{
+	static bool status_off = false;
+	const uint8_t Ihold = 7;
+	const uint8_t Ioff = 0x00;
+	if (on == status_off)
+	{
+		if (on)
+		{
+			stepper.iHold.set(&StepL, Ihold);
+			setRotaryColor(LED_YELLOW);
+			//StepL.iRun.value = Ihold;
+			//setIhold(i2cAddr_motL,Ihold);
+			//setIhold(i2cAddr_motR,Ihold);
+		}
+		else
+		{
+			setRotaryColor(LED_MAGENTA);
+			stepper.iHold.set(&StepL, Ioff);
+			//StepL.iRun.value = Ioff;
+			//setIhold(i2cAddr_motL,Ioff);
+			//setIhold(i2cAddr_motR,Ioff);
+		}
+	}
+
 }
 
 

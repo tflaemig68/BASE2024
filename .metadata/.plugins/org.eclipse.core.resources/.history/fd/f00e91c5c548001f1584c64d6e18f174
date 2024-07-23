@@ -45,9 +45,8 @@ void test_ascii_screen(void);
 void test_graphics(void);
 
 uint8_t I2C_SCAN(I2C_TypeDef *i2c, uint8_t scanAddr);
-
-struct Stepper StepL, StepR;
 void StepperIHold(bool on);
+
 const uint8_t iHold = 3;
 void StepperIHold(bool on)
 {
@@ -80,6 +79,9 @@ void StepperIHold(bool on)
 
 
 int Regler(int Pos, float phi, float v);
+
+
+struct Stepper StepL, StepR;
 
 
 

@@ -226,7 +226,7 @@ uint8_t getIRun(Stepper_t* stepper)
 void setIHold(Stepper_t* stepper, uint8_t value)
 {
 	stepper->iHold.value = value;
-	setMotorParam(stepper);
+	setStallParam5(stepper);
 }
 
 /**
@@ -393,7 +393,7 @@ uint8_t getAccel(Stepper_t* stepper)
 void setSecPos(Stepper_t* stepper, uint16_t value)
 {
 	stepper->securePosition.value = value;
-	setStallParam(stepper);
+	setParam(stepper);
 }
 
 /**
@@ -424,7 +424,7 @@ uint16_t getSecPos(Stepper_t* stepper)
 void setAccelShape(Stepper_t* stepper, uint8_t value)
 {
 	stepper->accelerationShape.value = value;
-	setStallParam(stepper);
+	setParam(stepper);
 }
 
 /**
