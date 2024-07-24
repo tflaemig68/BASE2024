@@ -1012,6 +1012,12 @@ void tftSetFont(uint8_t* font)
  * x is x position of character
  * y is y position of character
 */
+void tftSetColor(uint16_t FontColor, uint16_t BackColor)
+{
+	_fg = FontColor;
+	_bg = BackColor;
+}
+
 void tftPrintChar(uint8_t charval, int x, int y)
 {
 	uint8_t i,ch,fz;
@@ -1245,7 +1251,13 @@ void tftPrint(char *st, int x, int y, int deg)
 
 	}
 }
-
+void tftPrintColor(char *st, int x, int y, uint16_t FontColor)
+{
+	uint16_t _fg_old = _fg;
+	_fg = FontColor;
+	tftPrint(st, x, y, 0);
+	_fg = _fg_old;
+}
 
 
 /********************************************************************

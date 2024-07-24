@@ -122,7 +122,7 @@ void getFullStatus1(Stepper_t* stepper, uint8_t readArray[8])
  */
 void getFullStatus2(Stepper_t* stepper, uint8_t readArray[8])
 { // abspeichern als einzelne parameter im struct
-	uint8_t befehl = (uint8_t) 0xFC; // 0x81 is the command to get the FullStatus2
+	uint8_t befehl = (uint8_t) 0xFC; // 0xFc is the command to get the FullStatus2
 	I2C_TypeDef   *i2c;
 	uint8_t addr;
 	i2c = stepper->i2cBus.i2c;
@@ -154,8 +154,8 @@ void setMotorParam(Stepper_t* stepper)
 	data[5] = (stepper->securePosition.value >> 3) | (stepper->rotationDirection.value << 4) | stepper->acceleration.value;		// uint8_t xxx|y|zzzz   x=securePosition(10:8) y=rotationDirection z=acceleration(3:0)
 	data[6] = (uint8_t) stepper->securePosition.value;					// =securePosition(7:0)
 	// this line for set Stall Param 0x96
-	//data[7] = 0b10100010 | (stepper->pwmFrequency.value << 6) | (stepper->accelerationShape.value << 4) | (stepper->stepMode.value << 2) | stepper->pwmJitter.value;	// uint8_t 1|w|1|x|yy|1|z  w=pwmFrequency x=accelerationShape y=stepMode z=pwmJitter
-	data[7]=0b00001100;				// xxx|y|zz|xx  x=N/A y=AccShape z=stepMode
+	data[7] = 0b10100010 | (stepper->pwmFrequency.value << 6) | (stepper->accelerationShape.value << 4) | (stepper->stepMode.value << 2) | stepper->pwmJitter.value;	// uint8_t 1|w|1|x|yy|1|z  w=pwmFrequency x=accelerationShape y=stepMode z=pwmJitter
+	//data[7]=0b00001100;				// xxx|y|zz|xx  x=N/A y=AccShape z=stepMode
 	i2cBurstWrite(i2c, Addr, data, 8);
 }
 void setStallParam5(Stepper_t* stepper)
@@ -448,12 +448,14 @@ uint8_t getAccelShape(Stepper_t* stepper)
  * @param Stepper_t* stepper - the stepper to read the acceleration shape from
  * @returns uint16_t 16bit integer `-30000` .. `+30000`
  */
-int16_t StepperGetPos(Stepper_t* stepper) { // was getActualPosition
-	uint8_t data[8],ui_ret;
+int16_t StepperGetPos(Stepper_t* stepper)
+{ // was getActualPosition
+	uint8_t data[8];
+	int16_t i_ret;
 	getFullStatus2(stepper, data);
 	stepper->position.value = (int16_t) ((((uint16_t) data[1]) << 8) | (uint16_t) data[2]);
-	ui_ret = stepper->position.value;
-	return ui_ret;
+	i_ret = stepper->position.value;
+	return i_ret;
 }
 
 /**
@@ -494,11 +496,14 @@ void StepperSetPos(Stepper_t* stepper, int16_t value)
 /**
  * set the PWM frequency
  * @param Stepper_t* stepper - the stepper to set the PWM frequency
- * @param uint8_t value - the new PWM frequency: 0x0, 0x1 - for more information view data sheet
+ * @param uint8_t value - the new PWM frequency: default 0x0 = 22kHz; 0x1 = 44kHz no more annoying motor sound - for more information view data sheet
 */
 void setPWMFrequency(Stepper_t* stepper, uint8_t value)
 {
 	stepper->pwmFrequency.value = value;
+	setMotorParam(stepper);
+	/**
+	 *
 	uint8_t befehl = (uint8_t) 0x89;
 	uint8_t data[8];
 	I2C_TypeDef   *i2c;
@@ -514,6 +519,7 @@ void setPWMFrequency(Stepper_t* stepper, uint8_t value)
 	data[6] = (uint8_t)(stepper->securePosition.value); 	// seventh byte is securePosition(7:0)
 	data[7] = 0x10100010 | (stepper->pwmFrequency.value << 6) | (value << 4) | (stepper->stepMode.value) | stepper->pwmJitter.value;	// pwmFrequency, AccShape, stepMode, pwmJitter
 	i2cBurstWrite(i2c, Addr, data, 8); 	// send the data to the stepper
+	*/
 }
 
 /**
@@ -537,6 +543,9 @@ uint8_t getPWMJitter(Stepper_t* stepper) {
 void setPWMJitter(Stepper_t* stepper, uint8_t value)
 {
 	stepper->pwmJitter.value = value;
+	setMotorParam(stepper);
+/**
+
 	uint8_t befehl = (uint8_t) 0x89;
 	uint8_t data[8];
 	I2C_TypeDef   *i2c;
@@ -552,6 +561,7 @@ void setPWMJitter(Stepper_t* stepper, uint8_t value)
 	data[6] = (uint8_t)(stepper->securePosition.value); 	// seventh byte is securePosition(7:0)
 	data[7] = 0b10100010 | (stepper->pwmFrequency.value << 6) | (	stepper->accelerationShape.value << 4) | (stepper->stepMode.value << 2) | stepper->pwmJitter.value;	// 1|w|1|x|yy|1|z  w = pwmFrequency, x = accelerationShape, y = stepMode, z = pwmJitter
 	i2cBurstWrite(i2c, Addr, data, 8); 	// send the data to the stepper
+*/
 }
 
 /**
@@ -928,37 +938,31 @@ const Stepper_t stepper = {
 	.set = setStepper,
 };
 
+/** Example main used with two Stepper motors
+ *
+ *
+ #define i2cAddr_motL 0x61
+ #define i2cAddr_motR 0x60
+ int main() {
+ 	struct Stepper StepL, StepR;
+ 	const uint8_t iHold = 5;
 
+	// StepL.init(... 						iRun,	iHold, 	vMin,  	vMax, 	stepMode, rotDir, acceleration, securePosition)
+ 	StepperInit(&StepL, i2c, i2cAddr_motL, 	10, 	1,  	2, 		8, 		3, 			1, 		2,			 0);
+	StepperInit(&StepR, i2c, i2cAddr_motR, 	10, 	1,  	2, 		8, 		3, 			1, 		2,			 0);
 
-// int main() {
-//   struct Stepper stepper1;
-//   initStepperStruct(&stepper1);
-  
-//   struct Stepper stepper2;
-//   initStepperStruct(&stepper2);
-  
-  
+	stepper.iHold.set(&StepL, iHold);
 
-//   stepper1.iRun.value = 42;
-  
-  
-//   stepper1.iRun.get(&stepper1);
-//   stepper1.iRun.set(&stepper1, 77);
-//   stepper1.iRun.get(&stepper1);
-  
-//   //stepper1.copy(&stepper1, &stepper2);
-    
-    
-//   printf("Description: %s \n", stepper1.i2cBus.description);
-//   //printf("Description: %s \n", stepper1.i2cAddress.description);
-    
+   	int16_t PosL = 20;
+    StepperSetPos(StepL, PosL);
 
+    stepper.copy(&StepL, &StepR);
+    printf("Description: %s \n", StepL.i2cBus.description);
+	printf("Description: %s \n", StepL.i2cAddress.description);
 
-
-
-//   // Assign a value to the string using the strcpy function
-//   //strcpy(stepper1.i2cBus.description, "Some text");
-//   //strcpy(p1.i2cAddress.description, "Some other text");
-
-//   return 0;
-// }
+ 	// Assign a value to the string using the strcpy function
+ 	strcpy(StepL.i2cBus.description, "Some text");
+	strcpy(StepL.i2cAddress.description, "Some other text");
+ 	return 0;
+ }
+ */

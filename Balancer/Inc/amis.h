@@ -82,6 +82,7 @@ struct Stepper {
 
 void StepperInit(Stepper_t* stepper, I2C_TypeDef* i2cBus, uint8_t i2cAddress, uint8_t iRun, uint8_t iHold, uint8_t vMin, uint8_t vMax, uint8_t stepMode, uint8_t rotationDirection, uint8_t acceleration, uint16_t securePosition);
 void StepperSetPos(Stepper_t* stepper, int16_t value);
+int16_t StepperGetPos(Stepper_t* stepper);
 void StepperSoftStop(Stepper_t*);
 void StepperHardStop(Stepper_t*);
 void StepperResetPosition(Stepper_t* stepper);

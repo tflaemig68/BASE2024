@@ -155,6 +155,7 @@ extern const unsigned char SevenSegNumFont[];
 
 #endif /* __SevenSegNum_Fonts__ */
 
+
 /*****************************************************************************************
 Fonts end
 ******************************************************************************************/
@@ -272,12 +273,12 @@ extern void tftFillCircle(int16_t x, int16_t y, int radius, uint16_t color);
 extern void tftDrawBitmap(int x, int y, int sx, int sy, bitmapdatatype data, int scale);
 extern void tftDrawBitmapRotate(int x, int y, int sx, int sy, bitmapdatatype data, int deg, int rox, int roy);
 extern void tftSetFont(uint8_t* font);
-
+extern void tftSetColor(uint16_t FontColor, uint16_t BackColor);
 
 extern void tftPrintInt(int value,int x, int y, int deg);
 extern void tftPrintLong(long value,int x, int y, int deg);
 extern void tftPrintFloat(float value,int x, int y, int deg);
 extern void tftPrintDouble(double value,int x, int y, int deg);
 extern void tftPrint(char *st, int x, int y, int deg);
-
+extern void tftPrintColor(char *st, int x, int y, uint16_t FontColor);
 #endif
