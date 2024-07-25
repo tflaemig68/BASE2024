@@ -1,6 +1,6 @@
-17:30:04 **** Incremental Build of configuration Debug for project Balancer ****
+19:27:18 **** Incremental Build of configuration Debug for project Balancer ****
 make -j8 all 
 make: Nothing to be done for 'all'.
 
-17:30:04 Build Finished. 0 errors, 0 warnings. (took 213ms)
+19:27:19 Build Finished. 0 errors, 0 warnings. (took 192ms)
 

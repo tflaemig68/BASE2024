@@ -522,7 +522,7 @@ int8_t i2cMPU6050_init(I2C_TypeDef *i2c, int8_t restart)
 			break;
 			case -1:
 			{		// LowPass Config
-				i2cMPU6050LpFilt(i2c, 4);
+				setMPU6050LpFilt(i2c, 4);
 				step = 0;
 			}
 			break;

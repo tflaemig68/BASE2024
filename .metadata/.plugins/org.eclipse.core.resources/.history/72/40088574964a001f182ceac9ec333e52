@@ -30,7 +30,6 @@ extern int16_t i2cBMA020XYZ(I2C_TypeDef *i2c, int16_t *xyz);
 extern int8_t i2cMPU6050_init(I2C_TypeDef *i2c, int8_t restart);
 extern int16_t i2cMPU6050XYZ(I2C_TypeDef *i2c, int16_t *xyz);
 extern int16_t i2cMPU6050GYRO(I2C_TypeDef *i2c, int16_t *xyz);
-extern void i2cMPU6050LpFilt(I2C_TypeDef *i2c, uint8_t DLPF_CFG);
 
 extern int8_t i2cLIS3DH_init(I2C_TypeDef *i2c, int8_t restart);
 extern int8_t i2cLIS3DH_Temp(I2C_TypeDef *i2c);

@@ -1,10 +1,4 @@
-17:28:17 **** Incremental Build of configuration Debug for project Balancer ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-17:28:18 **** Incremental Build of configuration Debug for project MCAL ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-17:28:18 **** Incremental Build of configuration Debug for project Balancer ****
+19:26:51 **** Incremental Build of configuration Debug for project Balancer ****
 make -j8 all 
 arm-none-eabi-gcc "../Src/Balancer.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"D:/GITHUB/STM32/BASE2024/CMSIS" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Include" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/GITHUB/STM32/BASE2024/Balancer/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL/Src" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc/mcalTimer" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/Balancer.d" -MT"Src/Balancer.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "Src/Balancer.o"
 arm-none-eabi-gcc "../Src/RotaryPushButton.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"D:/GITHUB/STM32/BASE2024/CMSIS" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Include" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/GITHUB/STM32/BASE2024/Balancer/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL/Src" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc/mcalTimer" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/RotaryPushButton.d" -MT"Src/RotaryPushButton.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "Src/RotaryPushButton.o"
@@ -16,10 +10,25 @@ arm-none-eabi-ar -r  "libBalancer.a" @"objects.list"
 arm-none-eabi-ar: creating libBalancer.a
 Finished building target: libBalancer.a
  
-17:28:19 **** Incremental Build of configuration Debug for project MCAL ****
+19:26:52 **** Incremental Build of configuration Debug for project MCAL ****
 make -j8 all 
 make: Nothing to be done for 'all'.
-17:28:20 **** Incremental Build of configuration Debug for project BALi ****
+19:26:53 **** Incremental Build of configuration Debug for project Balancer ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/Balancer.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"D:/GITHUB/STM32/BASE2024/CMSIS" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Include" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/GITHUB/STM32/BASE2024/Balancer/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL/Src" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc/mcalTimer" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/Balancer.d" -MT"Src/Balancer.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "Src/Balancer.o"
+arm-none-eabi-gcc "../Src/RotaryPushButton.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"D:/GITHUB/STM32/BASE2024/CMSIS" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Include" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/GITHUB/STM32/BASE2024/Balancer/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL/Src" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc/mcalTimer" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/RotaryPushButton.d" -MT"Src/RotaryPushButton.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "Src/RotaryPushButton.o"
+arm-none-eabi-gcc "../Src/ST7735.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"D:/GITHUB/STM32/BASE2024/CMSIS" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Include" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/GITHUB/STM32/BASE2024/Balancer/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL/Src" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc/mcalTimer" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/ST7735.d" -MT"Src/ST7735.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "Src/ST7735.o"
+arm-none-eabi-gcc "../Src/Sensor3DG.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"D:/GITHUB/STM32/BASE2024/CMSIS" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Include" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/GITHUB/STM32/BASE2024/Balancer/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL/Src" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc/mcalTimer" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/Sensor3DG.d" -MT"Src/Sensor3DG.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "Src/Sensor3DG.o"
+arm-none-eabi-gcc "../Src/SensorTOF.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"D:/GITHUB/STM32/BASE2024/CMSIS" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Include" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/GITHUB/STM32/BASE2024/Balancer/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL/Src" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc/mcalTimer" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/SensorTOF.d" -MT"Src/SensorTOF.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "Src/SensorTOF.o"
+arm-none-eabi-gcc "../Src/amis.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"D:/GITHUB/STM32/BASE2024/CMSIS" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Include" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/GITHUB/STM32/BASE2024/Balancer/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL/Src" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc/mcalTimer" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/amis.d" -MT"Src/amis.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "Src/amis.o"
+arm-none-eabi-ar -r  "libBalancer.a" @"objects.list"  
+arm-none-eabi-ar: creating libBalancer.a
+Finished building target: libBalancer.a
+ 
+19:26:54 **** Incremental Build of configuration Debug for project MCAL ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+19:26:54 **** Incremental Build of configuration Debug for project BALi ****
 make -j8 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32 -DSTM32F4 -DSTM32F401RETx -DDEBUG -c -I"D:/GITHUB/STM32/BASE2024/MCAL" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Include" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc/mcalTimer" -I"D:/GITHUB/STM32/BASE2024/Balancer" -I"D:/GITHUB/STM32/BASE2024/Balancer/Inc" -I"D:/GITHUB/STM32/BASE2024/BALi/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "Src/main.o"
 arm-none-eabi-gcc -o "BALi.elf" @"objects.list"  -lBalancer -lMCAL -mcpu=cortex-m4 -T"D:\GITHUB\STM32\BASE2024\BALi\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BALi.map" -Wl,--gc-sections -static -L"D:\GITHUB\STM32\BASE2024\MCAL\Debug" -L"D:\GITHUB\STM32\BASE2024\CMSIS\Debug" -L"D:\GITHUB\STM32\BASE2024\MCAL\Debug\Src" -L"D:\GITHUB\STM32\BASE2024\Balancer\Debug" -L"D:\GITHUB\STM32\BASE2024\Balancer\Debug\Src" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
@@ -28,18 +37,18 @@ Finished building target: BALi.elf
 arm-none-eabi-size   BALi.elf 
 arm-none-eabi-objdump -h -S  BALi.elf  > "BALi.list"
    text	   data	    bss	    dec	    hex	filename
-  44080	   1480	   2288	  47848	   bae8	BALi.elf
+  44224	   1496	   2288	  48008	   bb88	BALi.elf
 Finished building: default.size.stdout
  
 Finished building: BALi.list
  
-17:28:22 **** Incremental Build of configuration Debug for project Balancer ****
+19:27:18 **** Incremental Build of configuration Debug for project Balancer ****
 make -j8 all 
 make: Nothing to be done for 'all'.
-17:28:22 **** Incremental Build of configuration Debug for project MCAL ****
+19:27:19 **** Incremental Build of configuration Debug for project MCAL ****
 make -j8 all 
 make: Nothing to be done for 'all'.
-17:28:22 **** Incremental Build of configuration Debug for project BALi ****
+19:27:19 **** Incremental Build of configuration Debug for project BALi ****
 make -j8 all 
 arm-none-eabi-gcc -o "BALi.elf" @"objects.list"  -lBalancer -lMCAL -mcpu=cortex-m4 -T"D:\GITHUB\STM32\BASE2024\BALi\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BALi.map" -Wl,--gc-sections -static -L"D:\GITHUB\STM32\BASE2024\MCAL\Debug" -L"D:\GITHUB\STM32\BASE2024\CMSIS\Debug" -L"D:\GITHUB\STM32\BASE2024\MCAL\Debug\Src" -L"D:\GITHUB\STM32\BASE2024\Balancer\Debug" -L"D:\GITHUB\STM32\BASE2024\Balancer\Debug\Src" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: BALi.elf
@@ -47,40 +56,7 @@ Finished building target: BALi.elf
 arm-none-eabi-size   BALi.elf 
 arm-none-eabi-objdump -h -S  BALi.elf  > "BALi.list"
    text	   data	    bss	    dec	    hex	filename
-  44080	   1480	   2288	  47848	   bae8	BALi.elf
-Finished building: default.size.stdout
- 
-Finished building: BALi.list
- 
-17:28:55 **** Incremental Build of configuration Debug for project Balancer ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-17:28:55 **** Incremental Build of configuration Debug for project MCAL ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-17:28:56 **** Incremental Build of configuration Debug for project BALi ****
-make -j8 all 
-arm-none-eabi-size   BALi.elf 
-   text	   data	    bss	    dec	    hex	filename
-  44080	   1480	   2288	  47848	   bae8	BALi.elf
-Finished building: default.size.stdout
- 
-17:30:04 **** Incremental Build of configuration Debug for project Balancer ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-17:30:04 **** Incremental Build of configuration Debug for project MCAL ****
-make -j8 all 
-make: Nothing to be done for 'all'.
-17:30:04 **** Incremental Build of configuration Debug for project BALi ****
-make -j8 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32 -DSTM32F4 -DSTM32F401RETx -DDEBUG -c -I"D:/GITHUB/STM32/BASE2024/MCAL" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Include" -I"D:/GITHUB/STM32/BASE2024/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc" -I"D:/GITHUB/STM32/BASE2024/MCAL/Inc/mcalTimer" -I"D:/GITHUB/STM32/BASE2024/Balancer" -I"D:/GITHUB/STM32/BASE2024/Balancer/Inc" -I"D:/GITHUB/STM32/BASE2024/BALi/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "BALi.elf" @"objects.list"  -lBalancer -lMCAL -mcpu=cortex-m4 -T"D:\GITHUB\STM32\BASE2024\BALi\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BALi.map" -Wl,--gc-sections -static -L"D:\GITHUB\STM32\BASE2024\MCAL\Debug" -L"D:\GITHUB\STM32\BASE2024\CMSIS\Debug" -L"D:\GITHUB\STM32\BASE2024\MCAL\Debug\Src" -L"D:\GITHUB\STM32\BASE2024\Balancer\Debug" -L"D:\GITHUB\STM32\BASE2024\Balancer\Debug\Src" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: BALi.elf
- 
-arm-none-eabi-size   BALi.elf 
-arm-none-eabi-objdump -h -S  BALi.elf  > "BALi.list"
-   text	   data	    bss	    dec	    hex	filename
-  44080	   1480	   2288	  47848	   bae8	BALi.elf
+  44224	   1496	   2288	  48008	   bb88	BALi.elf
 Finished building: default.size.stdout
  
 Finished building: BALi.list

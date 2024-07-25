@@ -95,8 +95,7 @@ struct Parameter
 
 
 char ParamTitle[ParamCount][7] = {"PhiZ","HwLP","LP","KP","KD","Rot"};
-float ParamValue[ParamCount] =  { -0.05, 2, 	0.14,  	0.4, 	0.24, 	1};
-//								{ -0.05, 6, 	0.2,  	0.6, 	1.75, 	2};
+float ParamValue[ParamCount] =   { -0.05, 6, 	0.2,  	0.6, 	1.75, 	2};
 float ParamScale[ParamCount] = 	 { 100,   1,	500, 	50, 	50, 	2};
 //Param[0].Value = 0;
 
@@ -121,7 +120,7 @@ int BalaPosRegler(int Pos, float phi)
 {
 	static float phi_old =0;
 	float delta_phi = phi - RegPa.phi_0;
-	int _iTargetPos = (int)((rad2step)*(RegPa.KP* tan(delta_phi) + (RegPa.KD* (phi - phi_old))));
+	int _iTargetPos = (int)((rad2step)*(RegPa.KP* (delta_phi)*(delta_phi)*sign(delta_phi) + (RegPa.KD* (phi - phi_old))));		//tilt approximation without tan()
 	//int _iTargetPos = (int)((rad2step)*(RegPa.KP* delta_phi + (RegPa.KD* tan(phi - phi_old))));
 	phi_old = phi;
 	return (Pos+_iTargetPos);
