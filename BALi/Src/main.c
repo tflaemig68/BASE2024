@@ -35,7 +35,7 @@ bool timerTrigger = false;
 uint32_t	Timer1 = 0UL;
 uint32_t    ST7735_Timer = 0UL;
 uint32_t    I2C_Timer = 0UL;
-#define StepTaskTime 5
+#define StepTaskTime 6
 
 
 /* Private function prototypes -----------------------------------------------*/
@@ -51,7 +51,7 @@ uint8_t I2C_SCAN(I2C_TypeDef *i2c, uint8_t scanAddr);
 #define i2cAddr_motR 0x60
 
 struct Stepper StepL, StepR;
-const uint8_t iHold = 7;
+const uint8_t iHold = 5;
 const int16_t rad2step =  530;		// Ratio step-counts (200 Full-Steps div 1/16 Steps) per rotation at rad:  509.4 =  200* 16 / (2 PI) or 1600/PI
 
 /**
@@ -63,7 +63,7 @@ const int16_t rad2step =  530;		// Ratio step-counts (200 Full-Steps div 1/16 St
 void StepperIHold(bool OnSwitch)
 {
 	static bool OldStatus = false;
-	const uint8_t iOff = 0x0;
+	const uint8_t iOff = 0x00;
 	if (OnSwitch != OldStatus)			// commands only active of OnSwitch Status changed
 	{
 		if (OnSwitch)
@@ -95,7 +95,7 @@ struct Parameter
 
 
 char ParamTitle[ParamCount][7] = {"PhiZ","HwLP","LP","KP","KD","Rot"};
-float ParamValue[ParamCount] =  { -0.05, 2, 	0.14,  	0.4, 	0.24, 	1};
+float ParamValue[ParamCount] =  { 0.0, 3, 	0.14,  	0.4, 	0.1, 	1};
 //								{ -0.05, 6, 	0.2,  	0.6, 	1.75, 	2};
 float ParamScale[ParamCount] = 	 { 100,   1,	500, 	50, 	50, 	2};
 //Param[0].Value = 0;
@@ -121,8 +121,7 @@ int BalaPosRegler(int Pos, float phi)
 {
 	static float phi_old =0;
 	float delta_phi = phi - RegPa.phi_0;
-	int _iTargetPos = (int)((rad2step)*(RegPa.KP* tan(delta_phi) + (RegPa.KD* (phi - phi_old))));
-	//int _iTargetPos = (int)((rad2step)*(RegPa.KP* delta_phi + (RegPa.KD* tan(phi - phi_old))));
+	int _iTargetPos = ((int)(rad2step)*(RegPa.KP* tan(delta_phi) + (RegPa.KD* (phi - phi_old))));
 	phi_old = phi;
 	return (Pos+_iTargetPos);
 }
@@ -255,8 +254,9 @@ int main(void)
 							   StepLenable = true;
 							   tftPrint((char *)"<-Left STEP\0",0,110,0);
 								//StepL.init(... 						iRun,	iHold, 	vMin,  	vMax, 	stepMode, rotDir, acceleration, securePosition)
-								StepperInit(&StepL, i2c, i2cAddr_motL, 	14, 	1,  	2, 		14, 		3, 			1, 		6,			 0);
-								stepper.pwmFrequency.set(&StepL, 1);
+							    StepperInit(&StepL, i2c, i2cAddr_motL, 	14, 	1,  	2, 		16, 		3, 			1, 		6,			 0);
+							    stepper.pwmFrequency.set(&StepL, 1);
+
 						   }
 						   break;
 					   	   case i2cAddr_motR:
@@ -264,8 +264,9 @@ int main(void)
 							   StepRenable = true;
 							   tftPrint((char *)"Right->\0",94,110,0);
 								//StepL.init(... 						iRun,	iHold, 	vMin,  	vMax, 	stepMode, rotDir, acceleration, securePosition)
-							   StepperInit(&StepR, i2c, i2cAddr_motR, 	14, 	1,  	2, 		14, 		3, 			0, 		6,			 0);
+							   StepperInit(&StepR, i2c, i2cAddr_motR, 	14, 	1,  	2, 		16, 		3, 			0, 		6,			 0);
 							   stepper.pwmFrequency.set(&StepR, 1);
+
 						   }
 						   break;
 					   	   case i2cAddr_RFID:
@@ -436,15 +437,15 @@ int main(void)
 						}
 
 						BalaRot = (int)ParamValue[ParamCount-1];
-						pos_motL = StepperGetPos(&StepL) + BalaPos + BalaRot;
-						pos_motR = StepperGetPos(&StepR) + BalaPos - BalaRot;
 						if (StepRenable)
 						{
+							pos_motR = StepperGetPos(&StepR) + BalaPos - BalaRot;
 							StepperSetPos(&StepR, pos_motR); //setPosition;
 							StepRenable = false;
 						}
 						else
 						{
+							pos_motL = StepperGetPos(&StepL) + BalaPos + BalaRot;
 							StepperSetPos(&StepL, pos_motL); //setPosition;
 							StepRenable = true;
 						}

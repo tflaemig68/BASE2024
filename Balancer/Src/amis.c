@@ -154,8 +154,9 @@ void setMotorParam(Stepper_t* stepper)
 	data[5] = (stepper->securePosition.value >> 3) | (stepper->rotationDirection.value << 4) | stepper->acceleration.value;		// uint8_t xxx|y|zzzz   x=securePosition(10:8) y=rotationDirection z=acceleration(3:0)
 	data[6] = (uint8_t) stepper->securePosition.value;					// =securePosition(7:0)
 	// this line for set Stall Param 0x96
-	data[7] = 0b10100010 | (stepper->pwmFrequency.value << 6) | (stepper->accelerationShape.value << 4) | (stepper->stepMode.value << 2) | stepper->pwmJitter.value;	// uint8_t 1|w|1|x|yy|1|z  w=pwmFrequency x=accelerationShape y=stepMode z=pwmJitter
-	//data[7]=0b00001100;				// xxx|y|zz|xx  x=N/A y=AccShape z=stepMode
+	data[7] = 0b10100010 | ((stepper->pwmFrequency.value) << 6) | ((stepper->accelerationShape.value) << 4) | ((stepper->stepMode.value) << 2) | (stepper->pwmJitter.value);
+								// uint8_t 1|w|1|x|yy|1|z  w=pwmFrequency x=accelerationShape y=stepMode z=pwmJitter
+
 	i2cBurstWrite(i2c, Addr, data, 8);
 }
 void setStallParam5(Stepper_t* stepper)
