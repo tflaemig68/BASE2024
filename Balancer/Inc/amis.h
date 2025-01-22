@@ -1,13 +1,13 @@
 /**
- *      step.h
+ *      amis.h
  * 
  *      @file step.c provides the methods to control a stepper via the `AMIS-30624`
  *      @author: Stefan Heinrich, Dennis Lotz
  *      Created on: Dez. 05, 2023
  */
 
-#ifndef STEP_H_
-#define STEP_H_
+#ifndef AMIS_H_
+#define AMIS_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -102,4 +102,4 @@ extern const Stepper_t stepper;
 
 
 
-#endif /* STEP_H_ */
+#endif /* AMIS_H_ */

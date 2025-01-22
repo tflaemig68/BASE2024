@@ -3,8 +3,7 @@
 	<name>BALi</name>
 	<comment></comment>
 	<projects>
-		<project>Balancer</project>
-		<project>MCAL</project>
+		<project>BALO</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

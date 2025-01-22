@@ -13,6 +13,7 @@
 
 void XYZ2AlphaBeta(int16_t *XYZ_raw, float *AlphaBeta)
 {
+		const float _pi = 3.141;
 		float X = (float) XYZ_raw[0]/160;  //Skalierung 10mg/digit at +-2g
 		float Y = (float) XYZ_raw[1]/160;
 		float Z = (float) XYZ_raw[2]/160;
@@ -38,7 +39,7 @@ uint16_t AlBeScreen(float *AlphaBeta)
 #define aDots 6							// Count of Dots for alpha line
 #define bDots 12
 
-	//const float _pi=3.141;
+	const float _pi=3.141;
 	const int16_t a_midxyl[3] = {30,40,14};			// alpha circle xpos, ypos ,length
 	const int16_t b_midxyl[3] = {100,40,38};		// beta circle xpos, ypos ,length
 	const uint16_t aColor = tft_YELLOW;

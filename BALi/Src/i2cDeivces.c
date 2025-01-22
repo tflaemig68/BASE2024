@@ -11,8 +11,6 @@
 #include "i2cDevices.h"
 
 
-
-
     //RFID SL018
 
 	uint8_t 	*strFirmware = (uint8_t *) " ....        \0";
@@ -21,13 +19,6 @@
 	uint8_t  RFIDcmd_getFirmwareVersion[2] = {0x01, 0xF0};
 	uint8_t  RFIDcmd_getMifareUID[2] = {0x01, 0x01};
 
-	bool enableRFID = false;
-
-
-
-
-	// LIDAR
-	bool enableLIDAR = false;
 
 uint8_t *convDecByteToHex(uint8_t byte)
 {

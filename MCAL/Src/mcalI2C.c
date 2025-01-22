@@ -13,12 +13,13 @@
  *
  * @file        mcalI2C.c
  * @brief       mcalI2C.c is part of the MCAL library for STM32F4xx.
- * @author      Dipl.-Ing. Ralf Jesse (embedded@ralf-jesse.de)
- * @date        Nov. 12, 2020
+ * @author      Prof.Flaemig, based on Dipl.-Ing. Ralf Jesse (embedded@ralf-jesse.de)
+ * @date        March 2024; Nov. 12, 2020
  *
  *
  * I2C-Address used only with 7Bit Format
- * @version     0.2
+ * @version     0.3
+ * 
  * @copyright   GNU Public License Version 3 (GPLv3)
  *
  * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as

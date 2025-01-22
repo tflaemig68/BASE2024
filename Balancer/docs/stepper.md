@@ -82,7 +82,7 @@
 ```c
 #include <stdint.h>
 #include <stdbool.h>
-#include <step.h>
+#include <stepper.h>
 #include <i2c.h>
 
 uint8_t *convDecByteToHex(uint8_t byte);
@@ -92,9 +92,13 @@ uint8_t geschw = 0x00;	// 0x0 bis 0xF
 
 int main(void)
 {
-    stepMotorInit(0xC2, 0);
-
-    /* Hauptprogramm: Endlosschleife */
+    
+	//StepL.init(... 						iRun,	iHold, 	vMin,  	vMax, 	stepMode, rotDir, acceleration, securePosition)
+	StepperInit(&StepL, i2c, i2cAddr_motL, 	14, 	1,  	2, 		14, 		3, 			1, 		6,			 0);
+    
+	
+// ab hier umstellen auf struct amis.c
+	/* Hauptprogramm: Endlosschleife */
     while(1)
     {
     	for(int i = 0; i < 500; ++i )

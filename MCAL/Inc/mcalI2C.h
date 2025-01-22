@@ -4,6 +4,9 @@
  *  Created on: Sep 22, 2020
  *      Author: Ralf Jesse
  *       Email: embedded@ralf-jesse.de
+ *	update: März 2024 
+ * 	by Prof Flaemigf DHBW Stuittgart
+ * 	Version 2.0
  */
 
 #ifndef MCALI2C_H_

@@ -1,7 +1,7 @@
 /**
- *      step.c
+ *      amis.c
  * 
- *      @file step.c provides the methods to control a stepper via the `AMIS-30624`
+ *      @file amis.c provides the methods to control a stepper via the `AMIS-30624`
  *      @author: Stefan Heinrich, Dennis Lotz
  *      Created on: Dez. 05, 2023
  */

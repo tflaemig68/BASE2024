@@ -17,14 +17,18 @@
 #include <mcalI2C.h>
 #include <ST7735.h>
 #include <RotaryPushButton.h>
-#include <Balancer.h>
-#include <Sensor3DG.h>
-#include <amis.h>
+#include <BALO.h>
+#include <i2cMPU.h>
+#include <i2cAMIS.h>
+#include <regler.h>
 
 #include "i2cDevices.h"
-#include "xyzScope.h"
 
 
+/* uncomment the following line #define oszi
+ * for display pitzch value
+*/
+//#define Oszi
 
 
 bool timerTrigger = false;
@@ -32,17 +36,34 @@ bool timerTrigger = false;
 
 // Declaration  Timer1 = Main Prog
 // 				ST7725_Timer delay Counter
-uint32_t	Timer1 = 0UL;
+uint32_t	DispTaskTimer = 0UL;
 uint32_t    ST7735_Timer = 0UL;
 uint32_t    I2C_Timer = 0UL;
-#define StepTaskTime 6
+
+#ifdef Oszi
+	#define StepTaskTime 20
+#else
+	#define StepTaskTime 7
+#endif
+#define DispTaskTime 700
 
 
 /* Private function prototypes -----------------------------------------------*/
 void test_ascii_screen(void);
 void test_graphics(void);
+void StepperFollowsPitch(bool StepLenable, bool StepRenable);
 
 uint8_t I2C_SCAN(I2C_TypeDef *i2c, uint8_t scanAddr);
+#define i2cAddr_RFID	0x50
+#define i2cAddr_LIDAR	0x29
+bool enableRFID = false;
+bool enableLIDAR = false;
+
+
+/*------------ MPU6050 Sensor -----------------*/
+
+MPU6050_t MPU1;
+
 
 
 /* ------ Def and Parameter for stepper motors ------ */
@@ -51,8 +72,14 @@ uint8_t I2C_SCAN(I2C_TypeDef *i2c, uint8_t scanAddr);
 #define i2cAddr_motR 0x60
 
 struct Stepper StepL, StepR;
-const uint8_t iHold = 5;
+const uint8_t iHold = 6;			// Stiffnes of Axis to Body rotation
 const int16_t rad2step =  530;		// Ratio step-counts (200 Full-Steps div 1/16 Steps) per rotation at rad:  509.4 =  200* 16 / (2 PI) or 1600/PI
+
+#define StepPaCount 5
+char StepPaTitle[StepPaCount][5] = {"iRun", "iHold",	"vMin",	 "vMax",	"accel"};
+uint8_t StepPaValue[StepPaCount] =  { 15, 		6, 		2, 		15,  	4 };		//Parameterset for DEKI Motor 35mm length
+const uint8_t stepMode = 3;
+const bool stepRotDir = true;
 
 /**
  * void StepperIHold(bool OnSwitch)
@@ -63,13 +90,13 @@ const int16_t rad2step =  530;		// Ratio step-counts (200 Full-Steps div 1/16 St
 void StepperIHold(bool OnSwitch)
 {
 	static bool OldStatus = false;
-	const uint8_t iOff = 0x00;
+	const uint8_t iOff = 0x01;
 	if (OnSwitch != OldStatus)			// commands only active of OnSwitch Status changed
 	{
 		if (OnSwitch)
 		{
-			stepper.iHold.set(&StepL, iHold);
-			stepper.iHold.set(&StepR, iHold);
+			stepper.iHold.set(&StepL, StepPaValue[2]);
+			stepper.iHold.set(&StepR, StepPaValue[2]);
 			setRotaryColor(LED_YELLOW);
 		}
 		else
@@ -81,9 +108,11 @@ void StepperIHold(bool OnSwitch)
 		OldStatus = OnSwitch;
 	}
 }
+/* Balancer assistant routines and parameters
+ *
+ */
 
-
-#define ParamCount 6
+#define ParamCount 11
 struct Parameter
 {
 	char Title[5];
@@ -93,53 +122,104 @@ struct Parameter
 	float manInc;
 } Param[ParamCount];
 
-
-char ParamTitle[ParamCount][7] = {"PhiZ","HwLP","LP","KP","KD","Rot"};
-float ParamValue[ParamCount] =  { 0.0, 3, 	0.14,  	0.4, 	0.1, 	1};
-//								{ -0.05, 6, 	0.2,  	0.6, 	1.75, 	2};
-float ParamScale[ParamCount] = 	 { 100,   1,	500, 	50, 	50, 	2};
-//Param[0].Value = 0;
-
-
-
 struct RegPameter
 {
-	float phi_0;			// Winkel der neutralen Nulllage
-	float tp_3dg;			// Faktor des Tiefpass der Sensorwerte
-	float tp_tar;			// Tiefpass ??
-	float KP;				// Proportional Faktor [steps/phi]
+	float KP;				// Proportional Faktor
 	float KD;				// Differential Faktor
 	float Rot;
-
 } RegPa;
 
 
+PIDContr_t 	PID_phi, 		// Pitch controll
+			PID_PosL,
+			PID_PosR;		// Position PID - closed Loop controller
+
+
+char ParamTitle[ParamCount][7] = {"phiZ","GyAc",	"HwLP",		"LP  ",	"piKP",	"piKI",	"piKD", "poKP",	"poKI",		"poKD",	"Rot "};
+float ParamValue[ParamCount] =  { 0.0, 		0.98, 		5, 		0.36,  	0.92, 	0.016, 	0.27, 		0.06, 	0.004, 	0.0,		0.25};
+//								{ -0.05, 	0.9,		6, 		0.2,  	0.6, 	0, 	1.75, 	2};
+float ParamScale[ParamCount] = 	 { 100,   	100, 		1,		500, 	100, 	500,  100,		100, 	500,  	100, 	4};			//  increment stepsize is 1/Value
+
+
+
+void SetRegParameter(MPU6050_t* MPUa)
+{
+	MPUlpbw tableLPFValue[7] = { LPBW_260, LPBW_184, LPBW_94, LPBW_44, LPBW_21, LPBW_10, LPBW_5};
+	MPUa->pitchZero = ParamValue[0];
+	MPUa->swLowPassFilt = ParamValue[3];
+	MPUa->pitchFilt = ParamValue[1];
+	//RegPa.KP = ParamValue[4];
+	PID_phi.KP = ParamValue[4];
+	PID_phi.KI = ParamValue[5];
+	//RegPa.KD = ParamValue[6];
+	PID_phi.KD = ParamValue[6];
+	if (ParamValue[2] <0 ) { ParamValue[2] =0;}
+	if (ParamValue[2] >6 ) { ParamValue[2] =6;}
+	MPUa->LowPassFilt = tableLPFValue[(uint)ParamValue[2]];
+	mpuSetLpFilt(MPUa);
+}
+
+
+
+void ParamEdit()
+{
+	int ButtPos;
+	static int oldButtPos = 0;
+	static int modif = 0;
+	char strT[32];
+	ButtPos = getRotaryPosition();
+	if (getRotaryPushButton())
+	{
+		if (++modif >= ParamCount)		{	modif = 0;	}
+		sprintf(strT, "%s :" , ParamTitle[modif]);
+		tftPrintColor((char *)strT,10,20,tft_GREEN);
+		sprintf(strT, "%+5.3f  ", ParamValue[modif]);
+		tftPrintColor((char *)strT,60,20,tft_GREEN);
+		ButtPos = (int)ParamScale[modif]*ParamValue[modif];
+		oldButtPos = ButtPos;
+		setRotaryPosition(ButtPos);
+
+	}
+
+	if (ButtPos != oldButtPos)
+	{
+		ParamValue[modif] = ((float)ButtPos/ParamScale[modif]);
+		sprintf(strT, "%+5.3f  ", ParamValue[modif]);
+		tftPrintColor((char *)strT,60,20,tft_YELLOW);
+		oldButtPos = ButtPos;
+		SetRegParameter(&MPU1);
+	}
+}
+
+
+
+
 /**
  *
  */
-int BalaPosRegler(int Pos, float phi)
+void BalaRegler(int16_t* setPos, float* targetPos, float phi, int16_t motPosL, int16_t motPosR)
 {
-	static float phi_old =0;
-	float delta_phi = phi - RegPa.phi_0;
-	int _iTargetPos = ((int)(rad2step)*(RegPa.KP* tan(delta_phi) + (RegPa.KD* (phi - phi_old))));
+
+
+	/*static float phi_old =0;
+	/int _iTargetPos = ((int)(rad2step)*(RegPa.KP* tan(phi) + (RegPa.KD* (phi - phi_old))));
 	phi_old = phi;
-	return (Pos+_iTargetPos);
-}
+	*/
 
-/**
- *
- */
-void SetRegParameter(I2C_TypeDef *i2c)
-{
-	RegPa.phi_0 = ParamValue[0];
-	RegPa.tp_3dg = ParamValue[2];
-	RegPa.KP = ParamValue[3];
-	RegPa.KD = ParamValue[4];
-	if (ParamValue[1] <0 ) { ParamValue[1] =0;}
-	if (ParamValue[1] >6 ) { ParamValue[1] =6;}
-	i2cMPU6050LpFilt(i2c, (uint8_t) ParamValue[1]);
+	float deltaPosL = targetPos[0]- motPosL;
+	float deltaPosR = targetPos[1]- motPosR;
+	float setPitch = (rad2step)* runPID(&PID_phi, phi);
+	if (deltaPosL > deltaPosR)
+	{
+		setPos[0] = (int16_t)	setPitch + runPID(&PID_PosL, deltaPosL);
+		setPos[1] = (int16_t) 	setPitch;
+	}
+	else
+	{
+		setPos[0] = (int16_t)	setPitch;
+		setPos[1] = (int16_t) 	setPitch + runPID(&PID_PosR, deltaPosR);
+	}
 }
-
 
 
 int main(void)
@@ -157,46 +237,42 @@ int main(void)
 	int8_t MPU6050ret=-1;
 	uint32_t   i2cTaskTime = 50UL;
 	bool MPU6050enable = false;
-	float MPUfilt[3] = {0,0,0};
-	#define orgkFilt 0.02
-	float kFilt = orgkFilt;
-
+	//float MPUfilt[3] = {0,0,0};
 
 	bool StepLenable = false;
 	bool StepRenable = false;
 
-
-
-	int BalaPos = 0, BalaRot = 0;
-
-
+	float BalaRot = 0;
 
 	char strX[8],strY[8],strZ[8],strT[32];
-	int8_t Temp;
-	int16_t XYZraw[3],XYZMPU[3]; //XYZgMPU[3];
+	float Temp;
+	//int16_t XYZraw[3],XYZMPU[3]; //XYZgMPU[3];
 
 /**	Menue for the Filter
  *
  */
 
-	int ButtPos, oldButtPos=0, modif=0;
 	int16_t pos_motR=0, pos_motL=0;
-	float XYZ[3], AlphaBeta[2];
+	float targetPos[2] = {0,0};
+	int16_t SetPos[2];
+
+	//float XYZ[3];
+	int pxPos, pyPos, DispVar=0;
+	bool restart = false;
+	uint16_t tft_color;
+	float AlphaBeta[2];
 
 	static uint8_t RunMode = 1;
 	static bool RunInit = true;
-	uint16_t timeTMode5;
-
-	//int RunMode = 1;
-   	//unsigned int r = 0;
 
        // Dies ist das Array, das die Adressen aller Timer-Variablen enthaelt.
        // Auch die Groesse des Arrays wird berechnet.
-       uint32_t *timerList[] = { &I2C_Timer, &ST7735_Timer /*, weitere Timer */ };
+
+       uint32_t *timerList[] = { &I2C_Timer, &ST7735_Timer , &DispTaskTimer /*, weitere Timer */ };
        size_t    arraySize = sizeof(timerList)/sizeof(timerList[0]);
 
 
-    BalaHWsetup();
+    BALOsetup();
     LED_red_on;
 
 	//Inits needed for TFT Display
@@ -229,6 +305,7 @@ int main(void)
 			systickUpdateTimerList((uint32_t *) timerList, arraySize);
 	   }
 
+
 	   if (isSystickExpired(I2C_Timer))
 	   {
 		   systickSetTicktime(&I2C_Timer, i2cTaskTime);
@@ -238,7 +315,7 @@ int main(void)
 		   	   case 0:  //I2C Scan
 		   	   {
 		   		   i2cSetClkSpd(i2c,  I2C_CLOCK_400);  // for RFID Reader reduced to 100
-		   		   i2cSetClkSpd(i2c2,  I2C_CLOCK_400);
+		   		   i2cSetClkSpd(i2c2,  I2C_CLOCK_1Mz);
 		   		   RunMode  = 1;
 		   	   }
 		   	   case 1:  //I2C Scan
@@ -253,8 +330,8 @@ int main(void)
 						   {
 							   StepLenable = true;
 							   tftPrint((char *)"<-Left STEP\0",0,110,0);
-								//StepL.init(... 						iRun,	iHold, 	vMin,  	vMax, 	stepMode, rotDir, acceleration, securePosition)
-							    StepperInit(&StepL, i2c, i2cAddr_motL, 	14, 	1,  	2, 		16, 		3, 			1, 		6,			 0);
+								//StepL.init(... 						iRun,	iHold, 	vMin,  	vMax, 	stepMode, 							rotDir, acceleration, securePosition)
+							    StepperInit(&StepL, i2c, i2cAddr_motL,StepPaValue[0], StepPaValue[1], StepPaValue[2],StepPaValue[3],stepMode,(uint8_t)!stepRotDir,StepPaValue[4], 0);
 							    stepper.pwmFrequency.set(&StepL, 1);
 
 						   }
@@ -263,8 +340,8 @@ int main(void)
 						   {
 							   StepRenable = true;
 							   tftPrint((char *)"Right->\0",94,110,0);
-								//StepL.init(... 						iRun,	iHold, 	vMin,  	vMax, 	stepMode, rotDir, acceleration, securePosition)
-							   StepperInit(&StepR, i2c, i2cAddr_motR, 	14, 	1,  	2, 		16, 		3, 			0, 		6,			 0);
+								//StepL.init(... 						iRun,	iHold, 	vMin,  	vMax, 	stepMode, 							rotDir, acceleration, securePosition)
+							   StepperInit(&StepR, i2c, i2cAddr_motR,StepPaValue[0], StepPaValue[1], StepPaValue[2],StepPaValue[3],stepMode,(uint8_t)stepRotDir, StepPaValue[4], 0);
 							   stepper.pwmFrequency.set(&StepR, 1);
 
 						   }
@@ -282,24 +359,10 @@ int main(void)
 							   tftPrint((char *)"TOF/LIADR\0",0,80,0);
 						   }
 						   break;
-						   case i2cAddr_LIS3DH:
-						   {
-
-							   tftPrint((char *)"LIS3DH\0",95,95,0);
-							   LED_blue_on;
-						   }
-						   break;
-						   case i2cAddr_BMA020:
-						   {
-
-							   tftPrint((char *)"BMA020\0",90,95,0);
-						   }
-						   break;
 						   case i2cAddr_MPU6050:
 						   {
 							   MPU6050enable = true;
 							   tftPrint((char *)"MPU6050 \0",0,95,0);
-
 						   }
 						   break;
 					   }
@@ -336,62 +399,62 @@ int main(void)
 	// 3DG Sensor function
 		   	 	case 4:  // 3DGInit Init
 		   	 	{
-		   	 		LED_green_on;
-		   			if ((MPU6050enable) && (MPU6050ret <0))
+		   	 		if ((MPU6050enable) && (MPU6050ret <0))
 					{
-						MPU6050ret = i2cMPU6050_init(i2c,0);
-					}
+		   				MPU6050ret = mpuInit(&MPU1, i2c, i2cAddr_MPU6050, FSCALE_250, ACCEL_2g, LPBW_184, NO_RESTART);
+		   			}
 		   			else
 		   			{ MPU6050ret = 0; }
 
-
-
 					if  (MPU6050ret == 0)									// MPU6050 init-procedure finished
 					{
+						// set MPU assemble
+						MPU1.RPY[0]= 2;				// MPU y Axis goes to the front
+						MPU1.RPY[1]= 3;				// MPU z-Axis goes to the left side
+						MPU1.RPY[2]= -1;			// MPU x-Axis goes down
 						if ((StepRenable)&& (StepLenable))
 						{
-
 							RunMode = 8;
+							i2cTaskTime = StepTaskTime;								// Tasktime for Stepper Balancing ca 8ms
 							RunInit = true;
+							LED_blue_off;
+							LED_green_on;
+
 						}
 						else
 						{
 							i2cTaskTime = 70;									// Tasktime for display 70ms
-							RunMode = 5;
-							timeTMode5 = 100;							// count of cycles in Mode5
+							RunMode = 7;
+							LED_green_on;
+							LED_blue_off;
 						}
 					}
 				}
 				break;
-		   		case 7:  // read LIS3DH Data
+		   		case 7:  // read MPU Data
 		   		{
-		   			LED_blue_on;
 
-		   			Temp = i2cLIS3DH_Temp(i2c);
-		   			sprintf(strT, "%+3i", Temp);
+		   			sprintf(strT, "%+3.2f", mpuGetTemp(&MPU1));
 		   			tftPrint((char *)strT,40,40,0);
 
-		   			i2cLIS3DH_XYZ(i2c,(int16_t *) XYZraw);
-
-  					XYZ[0] = (float) XYZraw[0]/0x3FFF;  //skalierung 1mg/digit at +-2g
-		   			XYZ[1] = (float) XYZraw[1]/0x3FFF;
-		   			XYZ[2] = (float) XYZraw[2]/0x3FFF;
-		   			sprintf(strX, "%+6.3f", XYZ[0]);
+		   			//i2cLIS3DH_XYZ(i2c,(int16_t *) XYZraw);
+		   			mpuGetAccel(&MPU1);
+  					sprintf(strX, "%+6.3f", MPU1.accel[0]);
 		   			tftPrint((char *)strX,20,50,0);
-		   			sprintf(strY, "%+6.3f", XYZ[1]);
+		   			sprintf(strY, "%+6.3f", MPU1.accel[1]);
 		   			tftPrint((char *)strY,20,60,0);
-		   			sprintf(strZ, "%+6.3f", XYZ[2]);
+		   			sprintf(strZ, "%+6.3f", MPU1.accel[2]);
 		   			tftPrint((char *)strZ,20,70,0);
-					if ((timeTMode5--) > 0)
+					/*if ((timeTMode5--) > 0)
 					{
 						RunMode = 8;
 						tftFillScreen(tft_BLACK);
-						tftPrint("T:    LIS3DH (C)23Fl",0,0,0);
+						tftPrint("T:    MPU6050 (C)23Fl",0,0,0);
 						i2cTaskTime = 100;
 						LED_blue_off;
 
-					}
-				    break;
+					}*/
+				break;
 				}
 		   		case 8:  // Stepper Closed loop Control
 				{
@@ -404,161 +467,100 @@ int main(void)
 						StepperIHold(true);										//IHold switched on
 						StepperResetPosition(&StepL);  		//resetPosition
 						StepperResetPosition(&StepR);
-						SetRegParameter(i2c);
-						i2cTaskTime = StepTaskTime;								// Tasktime for Stepper Balancing 7ms
+						targetPos[0] = 0;
+						targetPos[1] = 0;
+						SetRegParameter(&MPU1);
+
+						MPU1.timebase = (float) StepTaskTime* 10e-4;  			// CycleTime for calc from Gyro to angle  fitting statt 10-3 wird 10-4 gesetzt
+						initPID(&PID_phi, ParamValue[4],ParamValue[5],ParamValue[6], 1);
+						initPID(&PID_PosL, ParamValue[7],ParamValue[8],ParamValue[9], 1);
+						initPID(&PID_PosR, ParamValue[7],ParamValue[8],ParamValue[9], 1);
 						RunInit = false;
 					}
 
+					mpuGetPitch(&MPU1);
+					AlphaBeta[1] = MPU1.pitch;
+					AlphaBeta[0] = MPU1.pitchAccel;
+#ifdef Oszi
+            // Display angle values on the oscilloscope
+            AlBeOszi(AlphaBeta);
+#endif
+        			targetPos[0] += BalaRot;
+        			targetPos[1] -= BalaRot;
+            		//BalaRegler(SetPos, targetPos, MPU1.pitch, StepperGetPos(&StepL), StepperGetPos(&StepR));			// Achsen-Regler des Balancers ()
 
-					i2cMPU6050XYZ(i2c,(int16_t *) XYZMPU);
-					getFiltertAccData(XYZMPU, MPUfilt, RegPa.tp_3dg);
-					AlphaBeta[1] = atan(MPUfilt[1]/MPUfilt[0]);
 
-					BalaPos = BalaPosRegler(0, AlphaBeta[1]);
-
-
-					if (fabs(AlphaBeta[1]) > 0.7)  // tilt angle more than  pi/4 = 45deg  -shut off Stepper control and reduce the IHold current and power consumption -> save the planet ;-)
+					if (fabs(AlphaBeta[1]) > 0.35)  // tilt angle more than  0.2 pi/4 = 30deg  -shut off Stepper control and reduce the IHold current and power consumption -> save the planet ;-)
 					{
+						restart = false;
+						initPID(&PID_phi, ParamValue[4],ParamValue[5],ParamValue[6], 1);
+						initPID(&PID_PosL, ParamValue[7],ParamValue[8],ParamValue[9], 1);
+						initPID(&PID_PosR, ParamValue[7],ParamValue[8],ParamValue[9], 1);
 						StepperIHold(false);
 						StepperSoftStop(&StepR);
 						StepperSoftStop(&StepL);			//softStop
-
-					}
-					else
-					{
-						if (fabs((AlphaBeta[1])-RegPa.phi_0) < 0.03)
-						{
-							setRotaryColor(LED_GREEN);
-						}
-						else
-						{
-							setRotaryColor(LED_YELLOW);
-							StepperIHold(true);
-						}
-
-						BalaRot = (int)ParamValue[ParamCount-1];
-						if (StepRenable)
-						{
-							pos_motR = StepperGetPos(&StepR) + BalaPos - BalaRot;
-							StepperSetPos(&StepR, pos_motR); //setPosition;
-							StepRenable = false;
-						}
-						else
-						{
-							pos_motL = StepperGetPos(&StepL) + BalaPos + BalaRot;
-							StepperSetPos(&StepL, pos_motL); //setPosition;
-							StepRenable = true;
-						}
-
-					}
-					ButtPos = getRotaryPosition();
-					if (getRotaryPushButton())
-					{
-						if (++modif >= ParamCount)		{	modif = 0;	}
-						sprintf(strT, "%s :" , ParamTitle[modif]);
-						tftPrintColor((char *)strT,10,60,tft_GREEN);
-						sprintf(strT, "   %+5.3f   ", ParamValue[modif]);
-						tftPrintColor((char *)strT,40,60,tft_GREEN);
-						ButtPos = (int)ParamScale[modif]*ParamValue[modif];
-						oldButtPos = ButtPos;
-						setRotaryPosition(ButtPos);
-
-					}
-
-					if (ButtPos != oldButtPos)
-					{
-						ParamValue[modif] = ((float)ButtPos/ParamScale[modif]);
-						sprintf(strT, "   %+5.3f   ", ParamValue[modif]);
-						tftPrintColor((char *)strT,40,60,tft_YELLOW);
-						oldButtPos = ButtPos;
-						SetRegParameter(i2c);
-					}
-
-				}
-				break;
-		   		case 9:  // Stepper Position follow the tilt angle
-				{
-					if (RunInit)
-					{
-						tftFillScreen(tft_BLACK);
-						tftSetColor(tft_RED, tft_WHITE);
-						tftPrint("DHBW BALA Tilt (c)Fl\0",0,0,0);
-						tftSetColor(tft_GREEN, tft_BLACK);
-						StepperIHold(true);										//IHold switched on
-						StepperResetPosition(&StepL);  		//resetPosition
+						StepperResetPosition(&StepL);
 						StepperResetPosition(&StepR);
-
-						i2cTaskTime = StepTaskTime;								// Tasktime for Stepper Balancing 70ms
-						RunInit = false;
-					}
-
-
-					if (MPU6050enable)
-					{
-						i2cMPU6050XYZ(i2c,(int16_t *) XYZMPU);
-						getFiltertAccData(XYZMPU, MPUfilt, kFilt);
-						AlphaBeta[1] = atan(MPUfilt[1]/MPUfilt[0]);
-					}
-
-					if (fabs(AlphaBeta[1]) > 0.7)  // tilt angle more than  pi/4 = 45deg  -shut off Stepper control and reduce the IHold current and power consumption -> save the planet ;-)
-					{
-						StepperIHold(false);
-						StepperSoftStop(&StepR);
-						StepperSoftStop(&StepL);			//softStop
-
-						//StepperResetPosition(&StepL);  		//resetPosition
-						//StepperResetPosition(&StepR);
-						//pos_motR = 0;
-						//pos_motL = 0;
+						targetPos[0] = 0;
+						targetPos[1] = 0;
 					}
 					else
 					{
-						if (fabs(AlphaBeta[1]) < 0.05)
+						if (fabs((AlphaBeta[1])) < 0.05)
 						{
 							setRotaryColor(LED_GREEN);
+							restart = true;
 						}
 						else
 						{
 							setRotaryColor(LED_YELLOW);
 							StepperIHold(true);
-							pos_motL =(int16_t)(AlphaBeta[1]*rad2step);
-							pos_motR =(int16_t)(AlphaBeta[1]*rad2step);
+						}
+
+						BalaRot = ParamValue[ParamCount-1];
+						if (restart == true)
+						{
+							float setPitch = (rad2step)* runPID(&PID_phi, MPU1.pitch);
 							if (StepRenable)
 							{
+								//pos_motR = StepperGetPos(&StepR) + BalaPos - BalaRot;
+								float setMotR = runPID(&PID_PosR, targetPos[1]-StepperGetPos(&StepR));
+								if (setMotR*setPitch > 0)
+								{
+									pos_motR= (int16_t)setMotR + setPitch;
+								}
+								else
+								{
+									pos_motR= (int16_t)setPitch;
+								}
 								StepperSetPos(&StepR, pos_motR); //setPosition;
 								StepRenable = false;
 							}
 							else
 							{
+								//pos_motL = SetPos[0]; //		StepperGetPos(&StepL) + BalaPos + BalaRot;
+								//pos_motL= (int16_t)	(rad2step)* runPID(&PID_phi, MPU1.pitch) + runPID(&PID_PosL, targetPos[0]-StepperGetPos(&StepL));
+								float setMotL = runPID(&PID_PosL, targetPos[1]-StepperGetPos(&StepL));
+								if (setMotL*setPitch > 0)
+								{
+									pos_motL= (int16_t)setMotL + setPitch;
+								}
+								else
+								{
+									pos_motL= (int16_t)setPitch;
+								}
 								StepperSetPos(&StepL, pos_motL); //setPosition;
 								StepRenable = true;
 							}
 						}
 					}
-					ButtPos = getRotaryPosition();
-					if (getRotaryPushButton())
-					{
-
-						tftPrintInt(ButtPos,120,20,0);
-						int PosR = (int)StepperGetPos(&StepR);
-						int PosL = (int)StepperGetPos(&StepL);
-						sprintf(strT, "%+5i  %+5i", PosL, PosR);
-						tftPrintColor((char *)strT,20,60,tft_YELLOW);
-
-					}
-
-					if (ButtPos != oldButtPos)
-					{
-						kFilt = orgkFilt + ((float)ButtPos)/-500;
-						if (kFilt < 0.001) {kFilt = 0.001;}
-						if (kFilt > 1) {kFilt =1;}
-
-						sprintf(strT, "kFilt %5.3f ", kFilt);
-						tftPrint((char *)strT,10,20,0);
-						oldButtPos = ButtPos;
-					}
-				//RunMode = 2;
-
+					ParamEdit();  // run routine if Push Buttom activated
+				}
+				break;
+		   		case 9:  // Stepper Position follow the tilt angle
+				{
+					//i2cTaskTime = StepTaskTime;								// Tasktime for Stepper Control 50ms
+					StepperFollowsPitch(StepLenable, StepRenable);
 				}
 				break;
 		   		default:
@@ -567,6 +569,49 @@ int main(void)
 				}
 		   }  //end switch (RunMode)
 	   } // end if systickexp
+	   if (isSystickExpired(DispTaskTimer))
+	   {
+		  systickSetTicktime(&DispTaskTimer, DispTaskTime);
+		  if ((restart == false) && (RunMode == 8 ))
+		  {
+				  // Reset Disp timer
+				switch (DispVar)
+				{
+					case 0:
+					{
+						sprintf(strT, "%+6i", pos_motL);
+						pxPos = 0;
+						pyPos = 60;
+						tft_color = tft_WHITE;
+						tftPrintColor((char *)strT, pxPos, pyPos, tft_color);
+					}
+					//break;
+					case 1:
+					{
+						sprintf(strT, "%+6i", pos_motR);
+						pxPos = ST7735_TFTWIDTH - 30;
+						pyPos = 60;
+						tft_color = tft_WHITE;
+						tftPrintColor((char *)strT, pxPos, pyPos, tft_color);
+					}
+					//break;
+					case 2:
+					{
+						Temp = mpuTemp(&MPU1);
+						sprintf(strT, "%+3.1f", Temp);
+						pxPos = 10;// ST7735_TFTWIDTH/2-10;
+						pyPos = 30;
+						tft_color = tft_GREEN;
+						tftPrintColor((char *)strT, pxPos, pyPos, tft_color);
+					}
+					//break;
+					default:
+						DispVar = 0;
+				}
+
+
+		   }
+	   }
     } //end while
     return 0;
 }
@@ -631,139 +676,89 @@ uint8_t I2C_SCAN(I2C_TypeDef *i2c, uint8_t scanAddr)
 
 }
 
-
-
-/*
-void balanceMotor(void)
+void StepperFollowsPitch(bool StepLenable, bool StepRenable)
 {
-	const int offset_phi = 0; 		// Absolutwert des Winkels für die Schwerpunktlage in degr*10
-	int tp_fakttar = 50, tp_fakt3dg = 23;
-	int kp = 180;//345; // 140;
-	int kd = 999;	//1200 ;			// P Anteil kp/1000 , D-Anteil kd/1000
-	int y_off = 100;
-	//const float deg2rad = 0.0001745;				// Faktor PI/180°/100
-	static int y_old, PotPos;
-	static BYTE Ihold, OnMot;
-	static long _sto_ltargmean;
-	BYTE ret;
-	long _ltargetpos;
-	int _itargetpos, filt_target, x,y,z, PotPos_raw, phi, rw, Pos_OK, _txyz[4], gxyz[4];
-	int rot_l, rot_r;
-	static int pos_motL= 0, pos_motR= 0;
-	int disp = 0;
-	rot_l = -turnSteps;
-	rot_r = turnSteps;
-
-
-	//PotPos =  Conv_mV(ADCfilt[Chan_Uin])/(maxUpot_mV/250) - 125;
-	y_off += PotPos;
-	//kd += 3*PotPos;
-	ret = read_axes(D3Sens_addr, _txyz);
-	low_pass(_txyz, gxyz, tp_fakt3dg);
-//----------------------------------------------------------------------------
-// Regler auf Basis der Achs-Beschleunigungen
-	y = gxyz[2];
-	z = gxyz[3];
-	sprintf(senden, "y%+04i,z%+04i", y,z);
-	y += y_off;
-	_ltargetpos = (((long)y* (long)kp + (long)(kd*(y - y_old))))/((long)z);
-	y_old = y;
-
-	_sto_ltargmean += (long)(_ltargetpos) - (filt_target = _sto_ltargmean/tp_fakttar);
-	_itargetpos= -(int)_ltargetpos;  // Richtungsumkehr
-//----------------------------------------------------------------------------
-	sprintf(senden2, "tr%+05i,mt%+05i", _itargetpos, filt_target);
-//	phi = (int)phi_yz(gxyz)-offset_phi+PotPos;
-//	rw = (phi/10)*(phi_old/10);		// Werteüberlauf vermeiden
-//	if (rw >= 0) // true kein Vorzeichenwechsel,d.h. kein Seitenwechsel
-
-
-//		if ((phi < 150) && (phi > -150))
-//		{
-//			_itargetpos = (int) (kp/2* (float) tan(((float)phi)*deg2rad));		// Ruckelvermeidung durch geringere Verstärkung
-//		}
-//		else
-//		{
-//			_itargetpos = (int) (kp* (float) tan(((float)phi)*deg2rad));
-//		}
-//	_itargetpos += (int) (kd*(float) (phi - phi_old)*deg2rad);
-	//_itargetpos += (int) (kd*(float) tan(((float)(phi - phi_old))*deg2rad));
-//	phi_old = phi;
-
-
-
-	Pos_OK = 0;
-	if (z > 500)
+	int ButtPos, oldButtPos=0;
+	int16_t pos_motR=0, pos_motL=0;
+	float AlphaBeta[2];
+	char strT[32];
+	static bool RunInit = true;
+	if (RunInit)
 	{
-		Pos_OK = 1;
-	} // <Pos nur wenn noch innerhalb von 40° gekippt ist
+		tftFillScreen(tft_BLACK);
+		tftSetColor(tft_RED, tft_WHITE);
+		tftPrint("DHBW BALA Tilt (c)Fl\0",0,0,0);
+		tftSetColor(tft_GREEN, tft_BLACK);
+		StepperIHold(true);										//IHold switched on
+		StepperResetPosition(&StepL);  		//resetPosition
+		StepperResetPosition(&StepR);
+		RunInit = false;
+	}
+
+	mpuGetPitch(&MPU1);
+	AlphaBeta[1]= MPU1.pitch;
+
+
+	if (fabs(AlphaBeta[1]) > 0.7)  // tilt angle more than  pi/4 = 45deg  -shut off Stepper control and reduce the IHold current and power consumption -> save the planet ;-)
+	{
+		StepperIHold(false);
+		StepperSoftStop(&StepR);
+		StepperSoftStop(&StepL);			//softStop
+
+		//StepperResetPosition(&StepL);  		//resetPosition
+		//StepperResetPosition(&StepR);
+		//pos_motR = 0;
+		//pos_motL = 0;
+	}
 	else
 	{
-		softStop(motR_addr);
-		softStop(motL_addr);
-		sprintf(senden2, " 1___ %03i ---v ", y_off);
-		resetPosition(motR_addr);
-		pos_motR = 0;
-		resetPosition(motL_addr);
-		pos_motL = 0;
+		if (fabs(AlphaBeta[1]) < 0.05)
+		{
+			setRotaryColor(LED_GREEN);
+		}
+		else
+		{
+			setRotaryColor(LED_YELLOW);
+			StepperIHold(true);
+			pos_motL =(int16_t)(AlphaBeta[1]*rad2step);
+			pos_motR =(int16_t)(AlphaBeta[1]*rad2step);
+			if (StepRenable)
+			{
+				StepperSetPos(&StepR, pos_motR); //setPosition;
+				StepRenable = false;
+			}
+			else
+			{
+				StepperSetPos(&StepL, pos_motL); //setPosition;
+				StepRenable = true;
+			}
+		}
 	}
-
-
-
-
-//	if ((phi < 4500) && (phi > -4500)) {Pos_OK = 1;}		 // <Pos nur wenn noch innerhalb von 45° gekippt ist
-//	if ((Pos_OK == 1) && (OnMot != 1))
-//	{
-//		setIhold(motL_addr,Ihold);
-//		setIhold(motR_addr,Ihold);
-//		OnMot = 1;
-//	}
-//	if (Pos_OK != 1)
-//	{
-//		Ihold = getIhold(motL_addr);
-//		setIhold(motL_addr,0);
-//		setIhold(motR_addr,0);
-//		OnMot = 0;
-//	}
-
-	if (Pos_OK == 1)
+	ButtPos = getRotaryPosition();
+	if (getRotaryPushButton())
 	{
-//			resetPosition(motL_addr);
-//			setPosition(motL_addr, _itargetpos+rot_l);
-//			resetPosition(motR_addr);
-//			setPosition(motR_addr, _itargetpos+rot_r);
 
+		tftPrintInt(ButtPos,120,20,0);
+		int PosR = (int)StepperGetPos(&StepR);
+		int PosL = (int)StepperGetPos(&StepL);
+		sprintf(strT, "%+5i  %+5i", PosL, PosR);
+		tftPrintColor((char *)strT,20,60,tft_YELLOW);
 
-		if (_itargetpos <= rot_l )
-		{
-
-			// pos_motR = getActualPosition(motR_addr);		//
-			setPosition(motR_addr, pos_motR+_itargetpos+rot_r);
-			pos_motR += _itargetpos+rot_r;
-		}
-		else
-		{
-			//pos_motR = getActualPosition(motR_addr);		//
-			setPosition(motR_addr, pos_motR+_itargetpos);
-			pos_motR += _itargetpos;
-		}
-		if (rot_r <= _itargetpos)
-		{
-			//pos_motL = getActualPosition(motL_addr); //
-			setPosition(motL_addr, pos_motL+_itargetpos+rot_l);
-			pos_motL += _itargetpos+rot_l;
-		}
-		else
-		{
-			//pos_motL = getActualPosition(motL_addr); //
-			setPosition(motL_addr, pos_motL+_itargetpos);
-			pos_motL += _itargetpos;
-		}
 	}
+
+	if (ButtPos != oldButtPos)
+	{
+		/*kFilt = orgkFilt + ((float)ButtPos)/-500;
+		if (kFilt < 0.001) {kFilt = 0.001;}
+		if (kFilt > 1) {kFilt =1;}
+
+		sprintf(strT, "kFilt %5.3f ", kFilt);
+		tftPrint((char *)strT,10,20,0); */
+		oldButtPos = ButtPos;
+	}
+//RunMode = 2;
 
 }
-
-*/
 
 
 
